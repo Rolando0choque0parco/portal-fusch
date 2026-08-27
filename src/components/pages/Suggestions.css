@@ -1,0 +1,79 @@
+.suggestions-container {
+  padding: 40px 20px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.suggestions-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.suggestions-header h2 {
+  font-size: 32px;
+  color: var(--rojo-UNSCH);
+}
+
+.suggestions-header p {
+  color: var(--gris-oscuro);
+  margin-top: 5px;
+}
+
+.suggestions-form {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.suggestions-form .form-group {
+  margin-bottom: 20px;
+}
+
+.suggestions-form label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.suggestions-form input,
+.suggestions-form textarea,
+.suggestions-form select {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+  background: #f8f9fa;
+  font-size: 14px;
+}
+
+.suggestions-form input:focus,
+.suggestions-form textarea:focus,
+.suggestions-form select:focus {
+  outline: none;
+  border-color: var(--rojo-UNSCH);
+}
+
+.success-message {
+  background: #e8f5e9;
+  color: #2e7d32;
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.submit-btn {
+  background: var(--rojo-UNSCH);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 15px;
+  transition: all 0.3s;
+}
+
+.submit-btn:hover {
+  background: var(--rojo-oscuro);
+}

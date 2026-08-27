@@ -1,0 +1,13 @@
+ .footer {
+  background: var(--rojo-UNSCH);
+  color: var(--blanco);
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+}
+
+.footer-subtitle {
+  margin-top: 5px;
+  font-size: 12px;
+  opacity: 0.8;
+}

@@ -1,0 +1,268 @@
+.documents-container {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.documents-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.documents-header h2 {
+  font-size: 32px;
+  color: var(--rojo-UNSCH);
+}
+
+.documents-header p {
+  color: var(--gris-oscuro);
+  margin-top: 5px;
+}
+
+.admin-badge {
+  display: inline-block;
+  background: var(--rojo-UNSCH);
+  color: white;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  margin-left: 5px;
+}
+
+.upload-btn {
+  background: var(--rojo-UNSCH);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.upload-btn:hover {
+  background: var(--rojo-oscuro);
+}
+
+.upload-message {
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.upload-message.success {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.upload-message.error {
+  background: #fce4e4;
+  color: #d32f2f;
+}
+
+.upload-form-container {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  margin-bottom: 30px;
+}
+
+.upload-form-container h3 {
+  font-size: 24px;
+  color: var(--rojo-UNSCH);
+  margin-bottom: 20px;
+}
+
+.upload-form .form-group {
+  margin-bottom: 15px;
+}
+
+.upload-form label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.upload-form input,
+.upload-form textarea,
+.upload-form select {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+  background: #f8f9fa;
+  font-size: 14px;
+}
+
+.upload-form input:focus,
+.upload-form textarea:focus,
+.upload-form select:focus {
+  outline: none;
+  border-color: var(--rojo-UNSCH);
+}
+
+.file-name {
+  display: block;
+  font-size: 13px;
+  color: var(--rojo-UNSCH);
+  margin-top: 5px;
+}
+
+.upload-submit-btn {
+  background: var(--rojo-UNSCH);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 15px;
+  transition: all 0.3s;
+}
+
+.upload-submit-btn:hover {
+  background: var(--rojo-oscuro);
+}
+
+.documents-empty {
+  background: white;
+  border: 2px dashed var(--rojo-UNSCH);
+  border-radius: 20px;
+  padding: 60px 30px;
+  text-align: center;
+}
+
+.empty-icon {
+  font-size: 60px;
+  margin-bottom: 15px;
+}
+
+.documents-empty h3 {
+  font-size: 24px;
+  color: var(--gris-oscuro);
+  margin-bottom: 10px;
+}
+
+.documents-empty p {
+  color: var(--gris-medio);
+  margin-bottom: 20px;
+}
+
+.upload-btn-empty {
+  background: var(--rojo-UNSCH);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+.documents-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.document-card {
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.document-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.document-icon {
+  font-size: 40px;
+  margin-bottom: 15px;
+}
+
+.document-info h3 {
+  font-size: 18px;
+  color: var(--gris-oscuro);
+  margin-bottom: 5px;
+}
+
+.document-info p {
+  color: var(--gris-medio);
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.document-meta {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-size: 12px;
+  color: var(--gris-oscuro);
+  margin-bottom: 15px;
+}
+
+.doc-category,
+.doc-size,
+.doc-date,
+.doc-downloads {
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: #f0f0f0;
+}
+
+.document-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.doc-download-btn {
+  background: var(--rojo-UNSCH);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.doc-download-btn:hover {
+  background: var(--rojo-oscuro);
+}
+
+.doc-delete-btn {
+  background: #fce4e4;
+  color: #d32f2f;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+@media (max-width: 768px) {
+  .documents-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+}
+
+.admin-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.logout-btn {
+  background: #fce4e4;
+  color: #d32f2f;
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s;
+}
+
+.logout-btn:hover {
+  background: #d32f2f;
+  color: white;
+}

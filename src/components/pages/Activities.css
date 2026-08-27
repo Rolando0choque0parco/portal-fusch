@@ -1,0 +1,210 @@
+/* ==========================================
+   LISTA LARGA DE ACTIVIDADES
+========================================== */
+.activities-long-list {
+  padding: 40px 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.activities-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.activities-header h2 {
+  font-size: 36px;
+  color: var(--rojo-UNSCH);
+}
+
+.activities-header p {
+  color: var(--gris-oscuro);
+  font-size: 18px;
+}
+
+/* ==========================================
+   SECCIÓN DE CADA ACTIVIDAD
+========================================== */
+.activity-section {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  margin-bottom: 50px;
+  background: white;
+}
+
+/* FOTO PRINCIPAL - ESTILO HERO */
+.activity-main-image {
+  width: 100%;
+  height: 650px; /* 🔥 Más alto para que las fotos quepan mejor */
+  position: relative;
+  overflow: hidden;
+  background: #1a1a2e;
+  background-size: contain !important; /* 🔥 Hace que la foto se vea COMPLETA, sin recortar */
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+}
+
+.activity-main-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6));
+}
+
+.activity-main-overlay h2 {
+  font-size: 46px;
+  font-weight: 800;
+  color: white;
+  margin-bottom: 12px;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+}
+
+.activity-main-overlay p {
+  font-size: 22px;
+  font-weight: 300;
+  color: white;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7);
+  line-height: 1.5;
+}
+
+.activity-date-badge {
+  display: inline-block;
+  background: var(--rojo-UNSCH);
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+/* FLECHAS */
+.activity-main-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  font-size: 32px;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.activity-main-arrow:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.activity-main-arrow-left {
+  left: 30px;
+}
+
+.activity-main-arrow-right {
+  right: 30px;
+}
+
+/* DOTS */
+.activity-main-dots {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 14px;
+  z-index: 10;
+}
+
+.activity-main-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.activity-main-dot:hover {
+  transform: scale(1.2);
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.activity-main-dot.active {
+  background: #C8102E;
+  border-color: #C8102E;
+  transform: scale(1.2);
+}
+
+/* LIGHTBOX */
+.lightbox-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3000;
+  padding: 20px;
+}
+
+.lightbox-image {
+  max-width: 90%;
+  max-height: 90vh;
+  border-radius: 12px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .activities-header h2 {
+    font-size: 26px;
+  }
+  .activity-main-image {
+    height: 400px;
+  }
+  .activity-main-overlay h2 {
+    font-size: 28px;
+  }
+  .activity-main-overlay p {
+    font-size: 16px;
+  }
+  .activity-main-arrow {
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+  }
+  .activity-main-arrow-left {
+    left: 12px;
+  }
+  .activity-main-arrow-right {
+    right: 12px;
+  }
+  .activity-main-dots {
+    bottom: 16px;
+    gap: 10px;
+  }
+  .activity-main-dot {
+    width: 11px;
+    height: 11px;
+  }
+}
