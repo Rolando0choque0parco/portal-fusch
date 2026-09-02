@@ -114,18 +114,18 @@ function Documents() {
     }
   }
 
-  const handleDownload = async (doc: Document) => {
+  const handleDownload = async (docItem: Document) => {
     try {
-      const currentDoc = doc(db, 'documents', doc.id)
-      await updateDoc(currentDoc, { downloads: doc.downloads + 1 })
-      setDocuments(prev => prev.map(d => d.id === doc.id ? { ...d, downloads: d.downloads + 1 } : d))
+      const firebaseDoc = doc(db, 'documents', docItem.id)
+      await updateDoc(firebaseDoc, { downloads: docItem.downloads + 1 })
+      setDocuments(prev => prev.map(d => d.id === docItem.id ? { ...d, downloads: d.downloads + 1 } : d))
     } catch (error) {
       console.error('Error al actualizar descargas:', error)
     }
 
     const link = document.createElement('a')
-    link.href = doc.url
-    link.download = doc.fileName
+    link.href = docItem.url
+    link.download = docItem.fileName
     document.body.appendChild(link)
     link.click()
     document.body.removeChild(link)
@@ -135,8 +135,8 @@ function Documents() {
     if (!isAdmin) return
     if (confirm('¿Eliminar este documento?')) {
       try {
-        const currentDoc = doc(db, 'documents', doc.id)
-        await deleteDoc(currentDoc)
+        const firebaseDoc = doc(db, 'documents', id)
+        await deleteDoc(firebaseDoc)
         setDocuments(prev => prev.filter(d => d.id !== id))
       } catch (error) {
         console.error('Error al eliminar documento:', error)
@@ -264,34 +264,34 @@ function Documents() {
         </div>
       ) : (
         <div className="documents-grid">
-          {documents.map((doc) => (
-            <div key={doc.id} className="document-card">
+          {documents.map((docItem) => (
+            <div key={docItem.id} className="document-card">
               <div className="document-icon">
-                {doc.fileType.includes('pdf') ? '📄' :
-                 doc.fileType.includes('word') ? '📝' :
-                 doc.fileType.includes('excel') ? '📊' : '📁'}
+                {docItem.fileType.includes('pdf') ? '📄' :
+                 docItem.fileType.includes('word') ? '📝' :
+                 docItem.fileType.includes('excel') ? '📊' : '📁'}
               </div>
               <div className="document-info">
-                <h3>{doc.title}</h3>
-                <p>{doc.description}</p>
+                <h3>{docItem.title}</h3>
+                <p>{docItem.description}</p>
                 <div className="document-meta">
-                  <span className="doc-category">{categories[doc.category] || doc.category}</span>
-                  <span className="doc-size">📦 {doc.fileSize}</span>
-                  <span className="doc-date">📅 {doc.uploadDate}</span>
-                  <span className="doc-downloads">⬇️ {doc.downloads}</span>
+                  <span className="doc-category">{categories[docItem.category] || docItem.category}</span>
+                  <span className="doc-size">📦 {docItem.fileSize}</span>
+                  <span className="doc-date">📅 {docItem.uploadDate}</span>
+                  <span className="doc-downloads">⬇️ {docItem.downloads}</span>
                 </div>
               </div>
               <div className="document-actions">
                 <button 
                   className="doc-download-btn"
-                  onClick={() => handleDownload(doc)}
+                  onClick={() => handleDownload(docItem)}
                 >
                   ⬇️ Descargar
                 </button>
                 {isAdmin && (
                   <button 
                     className="doc-delete-btn"
-                    onClick={() => handleDelete(doc.id)}
+                    onClick={() => handleDelete(docItem.id)}
                   >
                     🗑️
                   </button>
