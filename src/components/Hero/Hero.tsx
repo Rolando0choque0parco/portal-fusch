@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './Hero.css';
 
 // 📸 Cada frase tiene una foto de fondo (con los nombres renombrados sin espacios)

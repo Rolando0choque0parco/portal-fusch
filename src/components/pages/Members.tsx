@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import './Members.css';
 
 function Members() {
