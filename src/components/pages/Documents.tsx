@@ -116,8 +116,8 @@ function Documents() {
 
   const handleDownload = async (doc: Document) => {
     try {
-      const docRef = doc(db, 'documents', doc.id)
-      await updateDoc(docRef, { downloads: doc.downloads + 1 })
+      const currentDoc = doc(db, 'documents', doc.id)
+      await updateDoc(currentDoc, { downloads: doc.downloads + 1 })
       setDocuments(prev => prev.map(d => d.id === doc.id ? { ...d, downloads: d.downloads + 1 } : d))
     } catch (error) {
       console.error('Error al actualizar descargas:', error)
@@ -135,7 +135,8 @@ function Documents() {
     if (!isAdmin) return
     if (confirm('¿Eliminar este documento?')) {
       try {
-        await deleteDoc(doc(db, 'documents', id))
+        const currentDoc = doc(db, 'documents', doc.id)
+        await deleteDoc(currentDoc)
         setDocuments(prev => prev.filter(d => d.id !== id))
       } catch (error) {
         console.error('Error al eliminar documento:', error)
