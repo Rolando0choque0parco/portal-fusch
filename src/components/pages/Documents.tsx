@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { collection, addDoc, getDocs, deleteDoc, doc, updateDoc } from 'firebase/firestore'
 import { db } from '../../firebase/firebaseConfig'
 import './Documents.css'
@@ -29,7 +29,7 @@ function Documents() {
     file: null as File | null
   })
 
-  // Verificar si hay admin logueado (cada vez que carga la página)
+  // Verificar si hay admin logueado
   useEffect(() => {
     const adminSession = localStorage.getItem('fusch_admin_session')
     setIsAdmin(adminSession === 'true')
@@ -51,13 +51,6 @@ function Documents() {
     }
     fetchDocuments()
   }, [])
-
-  // Función para cerrar sesión de admin
-  const handleLogoutAdmin = () => {
-    localStorage.removeItem('fusch_admin_session')
-    setIsAdmin(false)
-    setShowUpload(false)
-  }
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
@@ -170,7 +163,6 @@ function Documents() {
           </p>
         </div>
         
-        {/* ⚠️ SOLO ADMIN: Botón para subir y cerrar sesión */}
         {isAdmin && (
           <div className="admin-actions">
             <button 
@@ -181,7 +173,11 @@ function Documents() {
             </button>
             <button 
               className="logout-btn"
-              onClick={handleLogoutAdmin}
+              onClick={() => {
+                localStorage.removeItem('fusch_admin_session')
+                setIsAdmin(false)
+                setShowUpload(false)
+              }}
             >
               🚪 Cerrar Sesión
             </button>
@@ -189,14 +185,12 @@ function Documents() {
         )}
       </div>
 
-      {/* Mensaje de éxito/error */}
       {uploadMessage && (
         <div className={`upload-message ${uploadMessage.includes('✅') ? 'success' : 'error'}`}>
           {uploadMessage}
         </div>
       )}
 
-      {/* FORMULARIO DE SUBIDA - SOLO ADMIN */}
       {showUpload && isAdmin && (
         <div className="upload-form-container">
           <h3>📤 Subir Nuevo Documento</h3>
@@ -253,7 +247,6 @@ function Documents() {
         </div>
       )}
 
-      {/* LISTA DE DOCUMENTOS - VISIBLE PARA TODOS */}
       {documents.length === 0 ? (
         <div className="documents-empty">
           <span className="empty-icon">📭</span>

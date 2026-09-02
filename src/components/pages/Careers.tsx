@@ -2,16 +2,7 @@ import { useState } from 'react'
 import { faculties } from '../../data/careers'
 import './Careers.css'
 
-interface Faculty {
-  id: number
-  name: string
-  schools: string[]
-  history?: string
-  image?: string
-  description?: string
-}
-
-// Datos extendidos de facultades (con historia y las imágenes CORRECTAS)
+// Datos extendidos de facultades (con historia e imágenes LOCALES)
 const facultyDetails: Record<number, { history: string; description: string; image: string }> = {
   1: {
     history: 'La Facultad de Ciencias Agrarias fue fundada en 1677, siendo una de las más antiguas del Perú. Ha formado profesionales que han contribuido al desarrollo agropecuario de la región.',
@@ -50,12 +41,12 @@ const facultyDetails: Record<number, { history: string; description: string; ima
   },
   8: {
     history: 'La Facultad de Ingeniería de Minas, Geología y Civil se estableció en 1965, formando ingenieros para el desarrollo minero e infraestructura.',
-    description: 'Formamos ingenieros con capacidad de инovación, gestión de proyectos y desarrollo sostenible.',
+    description: 'Formamos ingenieros con capacidad de innovación, gestión de proyectos y desarrollo sostenible.',
     image: '/images/facultades/geologia_minas_civil.jpg'
   },
   9: {
     history: 'La Facultad de Ingeniería Química y Metalurgia fue creada en 1970, formando profesionales en procesos industriales y metalúrgicos.',
-    description: 'Formamos ingenieros con capacidad de gestión de procesos industriales, инovación y desarrollo tecnológico.',
+    description: 'Formamos ingenieros con capacidad de gestión de procesos industriales, innovación y desarrollo tecnológico.',
     image: '/images/facultades/quimica_metalurgia.png'
   },
   10: {

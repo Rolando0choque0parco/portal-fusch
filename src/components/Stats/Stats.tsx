@@ -1,4 +1,4 @@
- import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import './Stats.css';
 
 interface StatItem {
@@ -6,6 +6,12 @@ interface StatItem {
   number: number;
   label: string;
   suffix?: string;
+}
+
+interface AnimatedNumberProps {
+  target: number;
+  suffix?: string;
+  duration?: number;
 }
 
 const statsData: StatItem[] = [
@@ -42,8 +48,7 @@ function Stats() {
     };
   }, []);
 
-  // Función para animar los números
-  const AnimatedNumber = ({ target, suffix = '', duration = 2000 }) => {
+  const AnimatedNumber = ({ target, suffix = '', duration = 2000 }: AnimatedNumberProps) => {
     const [count, setCount] = useState(0);
     const [hasAnimated, setHasAnimated] = useState(false);
 
@@ -51,7 +56,6 @@ function Stats() {
       if (isVisible && !hasAnimated) {
         setHasAnimated(true);
         let startTime: number;
-        const startValue = 0;
 
         const animate = (timestamp: number) => {
           if (!startTime) startTime = timestamp;
