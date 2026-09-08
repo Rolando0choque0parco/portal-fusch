@@ -52,8 +52,6 @@ function Hero() {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);
   };
 
-  // 🔥 ESTA LÍNEA VA DENTRO DE LA FUNCIÓN, ANTES DEL RETURN:
-  console.log('Ruta de la imagen:', slides[currentIndex].image);
 
   return (
     <div className="hero-container">

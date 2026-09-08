@@ -12,6 +12,36 @@ interface AnimatedNumberProps {
   target: number;
   suffix?: string;
   duration?: number;
+  isVisible: boolean;
+}
+
+function AnimatedNumber({ target, suffix = '', duration = 2000, isVisible }: AnimatedNumberProps) {
+  const [count, setCount] = useState(0);
+  const hasAnimatedRef = useRef(false);
+
+  useEffect(() => {
+    if (isVisible && !hasAnimatedRef.current) {
+      hasAnimatedRef.current = true;
+      let startTime: number;
+
+      const animate = (timestamp: number) => {
+        if (!startTime) startTime = timestamp;
+        const progress = Math.min((timestamp - startTime) / duration, 1);
+        const current = Math.floor(progress * target);
+        setCount(current);
+
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        } else {
+          setCount(target);
+        }
+      };
+
+      requestAnimationFrame(animate);
+    }
+  }, [isVisible, target, duration]);
+
+  return <span className="animated-number">{count}{suffix}</span>;
 }
 
 const statsData: StatItem[] = [
@@ -37,45 +67,17 @@ function Stats() {
       { threshold: 0.2 }
     );
 
-    if (statsRef.current) {
-      observer.observe(statsRef.current);
+    const currentRef = statsRef.current;
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (statsRef.current) {
-        observer.unobserve(statsRef.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, []);
-
-  const AnimatedNumber = ({ target, suffix = '', duration = 2000 }: AnimatedNumberProps) => {
-    const [count, setCount] = useState(0);
-    const [hasAnimated, setHasAnimated] = useState(false);
-
-    useEffect(() => {
-      if (isVisible && !hasAnimated) {
-        setHasAnimated(true);
-        let startTime: number;
-
-        const animate = (timestamp: number) => {
-          if (!startTime) startTime = timestamp;
-          const progress = Math.min((timestamp - startTime) / duration, 1);
-          const current = Math.floor(progress * target);
-          setCount(current);
-
-          if (progress < 1) {
-            requestAnimationFrame(animate);
-          } else {
-            setCount(target);
-          }
-        };
-
-        requestAnimationFrame(animate);
-      }
-    }, [isVisible, target, duration, hasAnimated]);
-
-    return <span className="animated-number">{count}{suffix}</span>;
-  };
 
   return (
     <div className="stats-section" ref={statsRef}>
@@ -88,7 +90,7 @@ function Stats() {
           <div key={index} className="stat-card">
             <div className="stat-icon">{stat.icon}</div>
             <div className="stat-number">
-              <AnimatedNumber target={stat.number} suffix={stat.suffix || ''} />
+              <AnimatedNumber target={stat.number} suffix={stat.suffix || ''} isVisible={isVisible} />
             </div>
             <div className="stat-label">{stat.label}</div>
           </div>

@@ -1,6 +1,6 @@
 .suggestions-container {
   padding: 40px 20px;
-  max-width: 700px;
+  max-width: 960px;
   margin: 0 auto;
 }
 
@@ -21,9 +21,10 @@
 
 .suggestions-form {
   background: white;
-  padding: 30px;
+  padding: 35px;
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.04);
 }
 
 .suggestions-form .form-group {
@@ -33,19 +34,24 @@
 .suggestions-form label {
   display: block;
   font-weight: 600;
-  margin-bottom: 5px;
+  margin-bottom: 7px;
   font-size: 14px;
+  color: #333;
 }
 
-.suggestions-form input,
+.suggestions-form input[type="text"],
+.suggestions-form input[type="email"],
 .suggestions-form textarea,
 .suggestions-form select {
   width: 100%;
-  padding: 10px 12px;
-  border-radius: 10px;
+  padding: 12px 14px;
+  border-radius: 12px;
   border: 1px solid #e0e0e0;
   background: #f8f9fa;
   font-size: 14px;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  box-sizing: border-box;
 }
 
 .suggestions-form input:focus,
@@ -53,27 +59,373 @@
 .suggestions-form select:focus {
   outline: none;
   border-color: var(--rojo-UNSCH);
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(200, 16, 46, 0.1);
 }
 
+/* ==========================================
+   ADJUNTAR ARCHIVO (HASTA 5 MB)
+========================================== */
+.file-upload-group {
+  background: #fbfbfb;
+  padding: 16px;
+  border-radius: 14px;
+  border: 1px dashed #d5d8dc;
+}
+
+.file-hidden-input {
+  display: none;
+}
+
+.file-upload-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #f0f2f5;
+  color: #333;
+  padding: 10px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  border: 1px solid #d0d4dc;
+  transition: all 0.2s ease;
+}
+
+.file-upload-btn:hover {
+  background: #e4e7eb;
+  border-color: #bcc1ca;
+}
+
+.attached-file-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #edf7ed;
+  border: 1px solid #c8e6c9;
+  padding: 8px 14px;
+  border-radius: 10px;
+  margin-top: 12px;
+  font-size: 13px;
+  color: #1e4620;
+  max-width: 100%;
+}
+
+.file-chip-name {
+  font-weight: 600;
+  max-width: 250px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.file-chip-size {
+  color: #557c55;
+  font-size: 12px;
+}
+
+.remove-file-btn {
+  background: none;
+  border: none;
+  color: #d32f2f;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0 4px;
+  line-height: 1;
+}
+
+.remove-file-btn:hover {
+  transform: scale(1.2);
+}
+
+/* ==========================================
+   MENSAJES DE ESTADO Y AUTO-DISMISS
+========================================== */
 .success-message {
   background: #e8f5e9;
   color: #2e7d32;
-  padding: 12px;
-  border-radius: 10px;
+  padding: 14px 18px;
+  border-radius: 12px;
   margin-bottom: 20px;
-  font-weight: 500;
+  font-weight: 600;
+  border: 1px solid #c8e6c9;
+}
+
+.success-message.auto-dismiss {
+  animation: fadeInOut 3.5s forwards ease-in-out;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  85% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+
+.error-message {
+  background: #fce4e4;
+  color: #d32f2f;
+  padding: 14px 18px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  font-weight: 600;
+  border: 1px solid #f8bbd0;
 }
 
 .submit-btn {
   background: var(--rojo-UNSCH);
   color: white;
-  padding: 12px 24px;
+  padding: 14px 28px;
   border-radius: 12px;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 15px;
+  border: none;
+  cursor: pointer;
   transition: all 0.3s;
+  width: 100%;
 }
 
-.submit-btn:hover {
+.submit-btn:hover:not(:disabled) {
   background: var(--rojo-oscuro);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(200, 16, 46, 0.25);
+}
+
+.submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* ==========================================
+   SECCIÓN PARA EL ADMIN (BUZÓN EN TIEMPO REAL)
+========================================== */
+.admin-messages-section {
+  margin-top: 50px;
+  padding-top: 30px;
+  border-top: 2px dashed #e0e0e0;
+}
+
+.admin-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.admin-section-header h3 {
+  font-size: 24px;
+  color: var(--rojo-UNSCH);
+  margin: 0;
+}
+
+.admin-subtitle {
+  color: #666;
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+.admin-panel-link-btn {
+  display: inline-block;
+  background: #1a1a2e;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 13px;
+  transition: all 0.2s ease;
+}
+
+.admin-panel-link-btn:hover {
+  background: #2a2a4a;
+  transform: translateY(-1px);
+}
+
+.admin-messages-loading,
+.admin-messages-empty {
+  text-align: center;
+  padding: 40px 20px;
+  background: white;
+  border-radius: 16px;
+  color: #666;
+  font-size: 15px;
+}
+
+.admin-messages-empty span {
+  font-size: 40px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.admin-messages-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.admin-message-card {
+  background: white;
+  padding: 22px;
+  border-radius: 16px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: all 0.25s ease;
+}
+
+.admin-message-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.admin-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+}
+
+.category-tag {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+}
+
+.badge-sugerencia {
+  background: #e3f2fd;
+  color: #1976d2;
+}
+
+.badge-queja {
+  background: #fff3e0;
+  color: #f57c00;
+}
+
+.badge-reclamo {
+  background: #ffebee;
+  color: #d32f2f;
+}
+
+.badge-felicitacion {
+  background: #e8f5e9;
+  color: #388e3c;
+}
+
+.badge-denuncia {
+  background: #ede7f6;
+  color: #512da8;
+}
+
+.admin-msg-date {
+  color: #888;
+  font-size: 11px;
+}
+
+.admin-msg-author {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: 14px;
+}
+
+.admin-msg-email {
+  font-size: 12px;
+  color: #666;
+}
+
+.admin-msg-body {
+  font-size: 14px;
+  color: #333;
+  line-height: 1.5;
+  background: #fbfbfb;
+  padding: 12px;
+  border-radius: 10px;
+  border-left: 3px solid var(--rojo-UNSCH);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* Adjunto en la tarjeta del admin */
+.admin-msg-attachment {
+  background: #f0f4f8;
+  padding: 10px 12px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 13px;
+}
+
+.attachment-info {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  overflow: hidden;
+}
+
+.attachment-name {
+  font-weight: 600;
+  color: #1a1a2e;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.attachment-size {
+  color: #666;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.attachment-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.attachment-action-btn {
+  flex: 1;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.attachment-action-btn.view-btn {
+  background: #e0e7ff;
+  color: #3730a3;
+}
+
+.attachment-action-btn.view-btn:hover {
+  background: #c7d2fe;
+}
+
+.attachment-action-btn.download-btn {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.attachment-action-btn.download-btn:hover {
+  background: #bbf7d0;
 }
