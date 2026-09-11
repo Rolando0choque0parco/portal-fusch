@@ -14,7 +14,7 @@ const slides = [
     subtitle: 'Siempre cerca de las comunidades y estudiantes.',
   },
   {
-    image: '/images/visita-comedor/diseno-sin-titulo-44.png',
+    image: '/images/visita-comedor/1.png',
     title: 'Control y Transparencia',
     subtitle: 'Supervisando los servicios estudiantiles.',
   },
@@ -55,9 +55,9 @@ function Hero() {
 
   return (
     <div className="hero-container">
-      <div 
+      <div
         className="hero-slide"
-        style={{ 
+        style={{
           backgroundImage: `url(${slides[currentIndex].image})`,
           backgroundPosition: 'center',
           backgroundSize: 'cover',
