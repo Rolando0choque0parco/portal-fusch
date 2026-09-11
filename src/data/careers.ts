@@ -21,6 +21,8 @@ export interface AuthorityInfo {
   degree: string;
   bio: string;
   photo: string;
+  email?: string;
+  schedule?: string;
 }
 
 export interface FacultyExtendedData {
@@ -34,7 +36,11 @@ export interface FacultyExtendedData {
   authority: AuthorityInfo;
   timeline: TimelineMilestone[];
   schoolDetails: SchoolDetail[];
+  schedule?: string;
 }
+
+export const COMMON_FACULTY_MISSION = "Brindar formación académica integral a los estudiantes de pre y posgrado de la facultad, con una concepción holística del ser humano y la sociedad, incidiendo en la investigación e innovación, responsabilidad social, tutoría y gestión que contribuya al bienestar de la población de la región y del país.";
+export const COMMON_FACULTY_SCHEDULE = "8:30 am – 12:30 pm y 2:30 pm – 4:00 pm";
 
 export const faculties = [
   {
@@ -96,14 +102,17 @@ export const facultyExtendedDetails: Record<number, FacultyExtendedData> = {
     shortName: 'Ciencias Agrarias',
     image: '/images/facultades/ciencias_agrarias.jpg',
     foundationYear: '1960 (Instituto de Ingeniería Rural y Zootecnia) / 1984 (Facultad)',
-    history: 'La Facultad de Ciencias Agrarias de la UNSCH tiene sus orígenes históricos vinculados a la reactivación de la universidad mediante la Ley N.º 12828 (1957) y su reapertura en 1959. En 1960 se instituyó como Instituto de Ingeniería Rural y Zootecnia, transformándose en la actual Facultad con la Ley Universitaria 23733 en 1984. Ha sido pilar indiscutible de la producción agropecuaria, el manejo sustentable del suelo andino y la seguridad alimentaria de Ayacucho y del Perú.',
-    mission: 'Formar profesionales de excelencia ética, científica y tecnológica en agronomía, ingeniería agrícola, medicina veterinaria y gestión agroforestal, liderando la investigación e innovación agropecuaria sustentable y la vinculación con las comunidades andino-amazónicas.',
+    history: 'La Facultad de Ciencias Agrarias de la UNSCH tiene sus orígenes históricos vinculados a la reactivación de la universidad mediante la Ley N.º 12828 (1957) y su reapertura en 1959. En 1960 se instituyó como Instituto de Ingeniería Rural y Zootecnia, transformándose en la actual Facultad con la Ley Universitaria 23733 en 1984. Ha sido pilar indiscutible de la producción agropecuaria, el manejo sustentable del suelo andino y la seguridad alimentaria de Ayacucho y del país.',
+    mission: COMMON_FACULTY_MISSION,
+    schedule: COMMON_FACULTY_SCHEDULE,
     authority: {
       name: 'Dr. Felipe Escobar Ramírez',
       title: 'Decano de la Facultad de Ciencias Agrarias',
       degree: 'Doctor en Ciencias Agrarias / Docente Principal UNSCH',
       bio: 'Lidera la gestión académica y científica de la FCAC. Comprometido con la modernización de los laboratorios especializados, la acreditación de calidad, la protección del patrimonio agropecuario regional y el equipamiento integral de los centros experimentales de Wayllapampa y Canaán.',
-      photo: '/images/facultades/decano_ciencias_agrarias.jpg'
+      photo: '/images/decanos/decanocienciasagrarias.jpg',
+      email: 'felipe.escobar@unsch.edu.pe',
+      schedule: COMMON_FACULTY_SCHEDULE
     },
     timeline: [
       {
@@ -186,29 +195,32 @@ export const facultyExtendedDetails: Record<number, FacultyExtendedData> = {
     shortName: 'Ciencias Biológicas',
     image: '/images/facultades/ciencias_biologicas.jpg',
     foundationYear: '1965',
-    history: 'Creada para investigar la megadiversidad altoandina y la conservación de los ecosistemas de la cuenca del Mantaro y Pampas.',
-    mission: 'Formar biólogos con sólida formación científica e investigativa en biotecnología, ecología y gestión ambiental.',
+    history: 'Creada para investigar la megadiversidad altoandina y la conservación de los ecosistemas de la cuenca del Mantaro y Pampas, liderando la investigación molecular, biotecnológica y ambiental.',
+    mission: COMMON_FACULTY_MISSION,
+    schedule: COMMON_FACULTY_SCHEDULE,
     authority: {
-      name: 'Decano(a) de Ciencias Biológicas',
-      title: 'Decanatura de Facultad',
-      degree: 'Doctor(a) en Biología',
-      bio: 'Lidera la investigación científica en flora y fauna andina y la conservación de recursos genéticos.',
-      photo: '/images/facultades/ciencias_biologicas.jpg'
+      name: 'Dr. Saturnino Martín Tenorio Bautista',
+      title: 'Decano de la Facultad de Ciencias Biológicas',
+      degree: 'Doctor en Ciencias Biológicas / Investigador Principal UNSCH',
+      bio: 'Lidera la investigación científica en flora y fauna altoandina, preservación de recursos genéticos y modernización de los laboratorios de biología molecular y ecología.',
+      photo: '/images/decanos/decanocienciasbiologicas.jpg',
+      email: 'saturnino.tenorio@unsch.edu.pe',
+      schedule: COMMON_FACULTY_SCHEDULE
     },
     timeline: [
-      { year: '1965', title: 'Fundación', description: 'Creación de la facultad para la investigación de la biodiversidad.' },
-      { year: '1990', title: 'Laboratorios de Biotecnología', description: 'Modernización del estudio molecular andino.' }
+      { year: '1965', title: 'Fundación', description: 'Creación de la facultad para la investigación científica de la biodiversidad regional.' },
+      { year: '1990', title: 'Laboratorios de Biotecnología', description: 'Modernización del estudio genético y molecular andino.' }
     ],
     schoolDetails: [
       {
         name: 'Escuela Profesional de Biología',
         creationYear: '1965',
         creationContext: 'Estudio sistemático de la biodiversidad y ecosistemas andinos.',
-        director: 'Dirección de Biología',
+        director: 'Dirección de la Escuela de Biología',
         duration: '10 semestres académicos',
-        degree: 'Licenciado(a) en Biología',
-        practiceCenters: ['Herbario Huamangensis', 'Museo de Historia Natural UNSCH'],
-        description: 'Investigación en recursos biológicos, microbiología, genética y gestión ambiental.'
+        degree: 'Bachiller en Ciencias Biológicas / Título: Licenciado(a) en Biología',
+        practiceCenters: ['Herbario Huamangensis', 'Museo de Historia Natural UNSCH', 'Laboratorio de Genética y Biología Molecular'],
+        description: 'Investigación en biotecnología vegetal y animal, microbiología aplicada, genética, bioética y gestión y conservación ambiental.'
       }
     ]
   },
@@ -218,28 +230,30 @@ export const facultyExtendedDetails: Record<number, FacultyExtendedData> = {
     shortName: 'Ciencias de la Educación',
     image: '/images/facultades/ciencias_de_la_educacion.png',
     foundationYear: '1960',
-    history: 'Institución pionera en la formación pedagógica e intercultural bilingüe para la región de Ayacucho y el sur peruano.',
-    mission: 'Formar educadores innovadores y comprometidos con la calidad educativa y el desarrollo sociocultural.',
+    history: 'Institución pionera en la formación pedagógica e intercultural bilingüe para la región de Ayacucho y el sur peruano, forjando generaciones de educadores con vocación de servicio.',
+    mission: COMMON_FACULTY_MISSION,
+    schedule: COMMON_FACULTY_SCHEDULE,
     authority: {
-      name: 'Decano(a) de Educación',
-      title: 'Decanatura de Educación',
-      degree: 'Doctor(a) en Ciencias de la Educación',
-      bio: 'Promueve la educación intercultural, la investigación pedagógica y la formación de docentes líderes.',
-      photo: '/images/facultades/ciencias_de_la_educacion.png'
+      name: 'Dr. Víctor Raúl Tumbalobos Huamaní',
+      title: 'Decano de la Facultad de Ciencias de la Educación',
+      degree: 'Doctor en Ciencias de la Educación / Docente Principal UNSCH',
+      bio: 'Promueve la excelencia pedagógica, la investigación en educación intercultural bilingüe, la actualización curricular y la articulación con los colegios de la región.',
+      photo: '/images/decanos/decanodecienciasdelaeducacion.jpg',
+      schedule: COMMON_FACULTY_SCHEDULE
     },
     timeline: [
-      { year: '1960', title: 'Creación', description: 'Nacimiento de la Facultad de Educación con la reapertura.' }
+      { year: '1960', title: 'Creación Histórica', description: 'Nacimiento de la Facultad de Educación junto a la reapertura universitaria.' }
     ],
     schoolDetails: [
       {
         name: 'Educación Inicial, Primaria, Secundaria y Física',
         creationYear: '1960',
-        creationContext: 'Formación docente integral con enfoque humanista y bilingüe.',
-        director: 'Direcciones de Escuela de Educación',
+        creationContext: 'Formación docente integral con enfoque humanista, crítico e intercultural.',
+        director: 'Direcciones de Escuela de Ciencias de la Educación',
         duration: '10 semestres académicos',
-        degree: 'Licenciado(a) en Educación',
-        practiceCenters: ['Institución Educativa de Aplicación Guamán Poma de Ayala'],
-        description: 'Docentes capacitados en pedagogía moderna, TIC aplicadas a la enseñanza e investigación educativa.'
+        degree: 'Bachiller en Educación / Título: Licenciado(a) en Educación',
+        practiceCenters: ['Institución Educativa de Aplicación Guamán Poma de Ayala', 'Centros Educativos Piloto Región Ayacucho'],
+        description: 'Docentes capacitados en pedagogía moderna, tecnologías de la información aplicadas a la enseñanza y didáctica especializada.'
       }
     ]
   },
@@ -249,60 +263,66 @@ export const facultyExtendedDetails: Record<number, FacultyExtendedData> = {
     shortName: 'Ciencias de la Salud',
     image: '/images/facultades/ciencias_de_la_salud.jpg',
     foundationYear: '1975',
-    history: 'Comprometida con la salud pública, la formación de profesionales médicos, enfermeros y obstetras de primer nivel.',
-    mission: 'Formar profesionales de la salud con vocación humanística, ética y sólida base científica.',
+    history: 'Comprometida con la salud pública, la formación de médicos cirujanos, enfermeros, obstetras y farmacéuticos con los más altos estándares éticos y científicos de la macro región sur.',
+    mission: COMMON_FACULTY_MISSION,
+    schedule: COMMON_FACULTY_SCHEDULE,
     authority: {
-      name: 'Decano(a) de Ciencias de la Salud',
-      title: 'Decanatura de Ciencias de la Salud',
-      degree: 'Doctor(a) en Ciencias Médicas',
-      bio: 'Fortalece los convenios clínicos hospitalarios y la investigación en salud comunitaria.',
-      photo: '/images/facultades/ciencias_de_la_salud.jpg'
+      name: 'Dr. José Yarlequé Chocas',
+      title: 'Decanato de la Facultad de Ciencias de la Salud',
+      degree: 'Doctor en Ciencias de la Salud / Docente Investigador UNSCH',
+      bio: 'Lidera la consolidación de convenios hospitalarios de internado médico, la acreditación de escuelas de salud y la modernización de laboratorios biomédicos y clínicas simuladas.',
+      photo: '/images/decanos/decanocienciasdelasalud.png',
+      email: 'jose.yarleque@unsch.edu.pe',
+      schedule: COMMON_FACULTY_SCHEDULE
     },
     timeline: [
-      { year: '1975', title: 'Creación', description: 'Fundación del programa de ciencias biomédicas y de la salud.' },
+      { year: '1975', title: 'Fundación', description: 'Inicio de la formación en ciencias biomédicas y de la salud.' },
       { year: '2004', title: 'Medicina Humana', description: 'Creación de la Escuela Profesional de Medicina Humana.' }
     ],
     schoolDetails: [
       {
         name: 'Medicina Humana, Enfermería, Obstetricia, Farmacia y Bioquímica',
         creationYear: '1975 - 2004',
-        creationContext: 'Desarrollo de servicios médicos y de prevención sanitaria regional.',
-        director: 'Direcciones de Escuelas de la Salud',
-        duration: '10 a 14 semestres académicos',
-        degree: 'Médico Cirujano / Licenciado(a) en Enfermería, Obstetricia, Farmacia',
-        practiceCenters: ['Hospital Regional de Ayacucho', 'Centros de Salud MINSA / EsSalud'],
-        description: 'Cuidado integral del paciente, salud reproductiva, bioquímica clínica y salud comunitaria.'
+        creationContext: 'Desarrollo de servicios médicos de alta especialidad y prevención sanitaria regional.',
+        director: 'Direcciones de Escuela de Ciencias de la Salud',
+        duration: '10 a 14 semestres académicos (incluye internado médico)',
+        degree: 'Médico(a) Cirujano(a) / Licenciado(a) en Enfermería, Obstetricia, Farmacia y Bioquímica',
+        practiceCenters: ['Hospital Regional de Ayacucho', 'Hospital de Apoyo Jesús Nazareno', 'Centros de Salud MINSA / EsSalud'],
+        description: 'Cuidado integral del paciente, salud reproductiva, bioquímica clínica, terapéutica farmacológica y salud pública comunitaria.'
       }
     ]
   },
   5: {
     id: 5,
     name: 'Facultad de Ciencias Económicas, Administrativas y Contables',
-    shortName: 'Ciencias Económicas',
+    shortName: 'Ciencias Económicas (FCEA)',
     image: '/images/facultades/fcea.png',
     foundationYear: '1962',
-    history: 'Semillero de líderes empresariales, gestores públicos y contadores que dinamizan la economía nacional.',
-    mission: 'Formar profesionales competitivos en finanzas, gestión pública, contabilidad y emprendimiento.',
+    history: 'Semillero indiscutible de líderes empresariales, gestores públicos y contadores que dinamizan la economía regional y nacional con honestidad y visión estratégica.',
+    mission: COMMON_FACULTY_MISSION,
+    schedule: COMMON_FACULTY_SCHEDULE,
     authority: {
-      name: 'Decano(a) de FCEA',
-      title: 'Decanatura de Ciencias Económicas',
-      degree: 'Doctor(a) en Ciencias Empresariales',
-      bio: 'Impulsa la innovación financiera, la gestión gubernamental transparente y el emprendimiento.',
-      photo: '/images/facultades/fcea.png'
+      name: 'Dr. Pelayo Hilario Valenzuela',
+      title: 'Decano de la Facultad de Ciencias Económicas, Administrativas y Contables',
+      degree: 'Doctor en Ciencias Económicas / Docente Principal UNSCH',
+      bio: 'Impulsa la innovación financiera, convenios empresariales de prácticas preprofesionales, investigación econométrica y la modernización tecnológica de los gabinetes contables.',
+      photo: '/images/decanos/decanocienciaseconomicasadministrativascontables.png',
+      email: 'pelayo.hilario@unsch.edu.pe',
+      schedule: COMMON_FACULTY_SCHEDULE
     },
     timeline: [
-      { year: '1962', title: 'Fundación', description: 'Inauguración de cátedras económicas y contables en la UNSCH.' }
+      { year: '1962', title: 'Fundación', description: 'Inauguración formal de las cátedras económicas y contables en la UNSCH.' }
     ],
     schoolDetails: [
       {
         name: 'Administración de Empresas, Economía, Contabilidad',
         creationYear: '1962',
-        creationContext: 'Formación empresarial y gestión económica regional.',
+        creationContext: 'Formación empresarial, tributaria y gestión económica del Perú.',
         director: 'Direcciones de Escuela FCEA',
         duration: '10 semestres académicos',
-        degree: 'Licenciado(a) en Administración / Economista / Contador(a) Público',
-        practiceCenters: ['Centros de Asesoría Empresarial y Contable'],
-        description: 'Auditoría, formulación de proyectos de inversión, dirección estratégica y finanzas.'
+        degree: 'Licenciado(a) en Administración / Economista / Contador(a) Público(a)',
+        practiceCenters: ['Centros de Asesoría Empresarial y Contable', 'Laboratorio de Simulación Financiera'],
+        description: 'Auditoría, formulación de proyectos de inversión pública y privada, dirección estratégica y finanzas corporativas.'
       }
     ]
   },
@@ -312,28 +332,31 @@ export const facultyExtendedDetails: Record<number, FacultyExtendedData> = {
     shortName: 'Ciencias Sociales',
     image: '/images/facultades/ciencias_sociales.png',
     foundationYear: '1968',
-    history: 'Referente nacional en antropología andina, arqueología de Wari y análisis de las dinámicas sociales del Perú.',
-    mission: 'Generar conocimiento crítico sobre los procesos históricos, culturales y sociales de la nación.',
+    history: 'Referente nacional e internacional en antropología andina, arqueología del Imperio Wari y análisis crítico de las dinámicas sociopolíticas del Perú contemporáneo.',
+    mission: COMMON_FACULTY_MISSION,
+    schedule: COMMON_FACULTY_SCHEDULE,
     authority: {
-      name: 'Decano(a) de Ciencias Sociales',
-      title: 'Decanatura de Ciencias Sociales',
-      degree: 'Doctor(a) en Antropología y Sociedad',
-      bio: 'Promueve la investigación etnográfica y la preservación del patrimonio histórico ayacuchano.',
-      photo: '/images/facultades/ciencias_sociales.png'
+      name: 'Dr. Oscar Juan Roque Siguas',
+      title: 'Decano de la Facultad de Ciencias Sociales',
+      degree: 'Doctor en Ciencias Sociales / Docente Principal UNSCH',
+      bio: 'Promueve la investigación arqueológica, la salvaguarda del patrimonio cultural ayacuchano, proyectos de intervención comunitaria y fortalecimiento de las ciencias sociales.',
+      photo: '/images/decanos/decanocienciassociales.jpg',
+      email: 'oscar.roque@unsch.edu.pe',
+      schedule: COMMON_FACULTY_SCHEDULE
     },
     timeline: [
-      { year: '1968', title: 'Creación', description: 'Fundación de la Facultad orientada al estudio social andino.' }
+      { year: '1968', title: 'Creación', description: 'Fundación de la Facultad orientada al estudio social y antropológico andino.' }
     ],
     schoolDetails: [
       {
         name: 'Antropología Social, Arqueología, Historia, Sociología, Trabajo Social',
         creationYear: '1968',
-        creationContext: 'Reconocimiento de la herencia milenaria y desarrollo social.',
+        creationContext: 'Reconocimiento de la herencia milenaria andina y desarrollo social equitativo.',
         director: 'Direcciones de Escuela de Ciencias Sociales',
         duration: '10 semestres académicos',
-        degree: 'Licenciado(a) en Ciencias Sociales',
-        practiceCenters: ['Complejo Arqueológico Wari', 'Archivos Históricos de Ayacucho'],
-        description: 'Investigación antropológica, excavación y preservación arqueológica, políticas de bienestar social.'
+        degree: 'Bachiller en Ciencias Sociales / Título: Licenciado(a) en la especialidad respectiva',
+        practiceCenters: ['Complejo Arqueológico Wari', 'Archivos Históricos de Ayacucho', 'Laboratorio de Arqueometría'],
+        description: 'Investigación etnográfica, excavación y puesta en valor del patrimonio arqueológico, formulación de políticas sociales y trabajo comunitario.'
       }
     ]
   },
@@ -343,90 +366,100 @@ export const facultyExtendedDetails: Record<number, FacultyExtendedData> = {
     shortName: 'Derecho y CC.PP.',
     image: '/images/facultades/derecho.png',
     foundationYear: '1677',
-    history: 'Una de las facultades de derecho más antiguas y respetadas de América, fundada con la misma universidad en 1677.',
-    mission: 'Formar juristas con profundo sentido de la justicia, defensa del Estado de derecho y probidad.',
+    history: 'Una de las facultades de derecho más antiguas y prestigiosas del continente, nacida con la fundación misma de la universidad en 1677 y baluarte de la justicia y el constitucionalismo.',
+    mission: COMMON_FACULTY_MISSION,
+    schedule: COMMON_FACULTY_SCHEDULE,
     authority: {
-      name: 'Decano(a) de Derecho',
-      title: 'Decanatura de Derecho',
-      degree: 'Doctor(a) en Derecho',
-      bio: 'Defensor de los derechos humanos y la modernización del sistema procesal.',
-      photo: '/images/facultades/derecho.png'
+      name: 'Dr. Oscar A. Galván Oviedo',
+      title: 'Decano de la Facultad de Derecho y Ciencias Políticas',
+      degree: 'Doctor en Derecho y Ciencias Políticas / Jurista y Docente Principal',
+      bio: 'Firme defensor del Estado de Derecho, los derechos humanos y la modernización de las salas de audiencias simuladas para la formación procesal y penal de los futuros abogados.',
+      photo: '/images/decanos/decanoderecho.jpg',
+      email: 'oscar.galvan@unsch.edu.pe',
+      schedule: COMMON_FACULTY_SCHEDULE
     },
     timeline: [
-      { year: '1677', title: 'Fundación Pontificia', description: 'Inicio de la enseñanza del Derecho Canónico y Civil.' }
+      { year: '1677', title: 'Fundación Pontificia', description: 'Inicio de la enseñanza del Derecho Canónico y Civil en Huamanga.' },
+      { year: '1959', title: 'Reactivación Moderna', description: 'Restablecimiento de la cátedra de Derecho con la reapertura de la UNSCH.' }
     ],
     schoolDetails: [
       {
         name: 'Escuela Profesional de Derecho',
         creationYear: '1677 / Reactivada en 1959',
-        creationContext: 'Pilar de la jurisprudencia y la defensa de los derechos fundamentales.',
-        director: 'Dirección de la Escuela de Derecho',
+        creationContext: 'Pilar fundamental de la jurisprudencia, legalidad y defensa de las libertades individuales y colectivas.',
+        director: 'Dirección de la Escuela Profesional de Derecho',
         duration: '12 semestres académicos (6 años)',
-        degree: 'Abogado(a) / Bachiller en Derecho',
-        practiceCenters: ['Consultorio Jurídico Gratuito UNSCH', 'Corte Superior de Justicia de Ayacucho'],
-        description: 'Litigio penal, constitucional, civil, laboral y asesoría jurídica corporativa y comunitaria.'
+        degree: 'Bachiller en Derecho / Título Profesional: Abogado(a)',
+        practiceCenters: ['Consultorio Jurídico Gratuito UNSCH', 'Corte Superior de Justicia de Ayacucho', 'Ministerio Público'],
+        description: 'Litigio penal, derecho constitucional, civil, corporativo, laboral, procesal oral y conciliación extrajudicial.'
       }
     ]
   },
   8: {
     id: 8,
     name: 'Facultad de Ingeniería de Minas, Geología y Civil',
-    shortName: 'Minas, Geología y Civil',
+    shortName: 'Minas, Geología y Civil (FIMGC)',
     image: '/images/facultades/geologia_minas_civil.jpg',
     foundationYear: '1965',
-    history: 'Cuna de ingenieros que han construido la infraestructura y desarrollado la geología y minería responsable del país.',
-    mission: 'Formar ingenieros altamente capacitados en diseño estructural, explotación minera sostenible y tecnología.',
+    history: 'Cuna de ingenieros de élite que han construido la infraestructura vial, civil y minero-geológica del Perú con los más altos estándares tecnológicos y de seguridad.',
+    mission: COMMON_FACULTY_MISSION,
+    schedule: COMMON_FACULTY_SCHEDULE,
     authority: {
-      name: 'Decano(a) de FIMGC',
-      title: 'Decanatura de Minas, Geología y Civil',
-      degree: 'Doctor(a) en Ingeniería',
-      bio: 'Fomenta la tecnología sismorresistente, la minería ambiental y la transformación digital.',
-      photo: '/images/facultades/geologia_minas_civil.jpg'
+      name: 'Mg. José Ernesto Estrada Cárdenas',
+      title: 'Decano de la Facultad de Ingeniería de Minas, Geología y Civil',
+      degree: 'Magíster en Ingeniería / Docente Principal UNSCH',
+      bio: 'Lidera la modernización de los laboratorios de mecánica de suelos, geomecánica, software sismorresistente e impulsa la minería ambiental y la transformación tecnológica.',
+      photo: '/images/decanos/decanominasgeologiacivil.jpg',
+      email: 'jose.estrada@unsch.edu.pe',
+      schedule: COMMON_FACULTY_SCHEDULE
     },
     timeline: [
-      { year: '1965', title: 'Fundación', description: 'Inauguración de la formación en ingeniería pesada y minera.' }
+      { year: '1965', title: 'Fundación', description: 'Inauguración de la formación en ingeniería pesada, civil y geológica.' }
     ],
     schoolDetails: [
       {
         name: 'Ingeniería Civil, Ingeniería de Sistemas, Minas, Físico Matemáticas',
         creationYear: '1965 - 1990',
-        creationContext: 'Infraestructura vial, edificaciones, software y recursos minerales.',
+        creationContext: 'Infraestructura vial, edificaciones sismorresistentes, desarrollo de software y recursos minerales estratégicos.',
         director: 'Direcciones de Escuela FIMGC',
         duration: '10 semestres académicos',
-        degree: 'Ingeniero(a) Colegiado(a)',
-        practiceCenters: ['Laboratorio de Estructuras y Pavimentos', 'Data Center Universitario'],
-        description: 'Cálculo de estructuras, desarrollo de software, geomecánica y exploración geológica.'
+        degree: 'Bachiller en Ingeniería / Título: Ingeniero(a) Colegiado(a)',
+        practiceCenters: ['Laboratorio de Estructuras y Pavimentos', 'Data Center Universitario', 'Mina Escuela'],
+        description: 'Cálculo estructural BIM, ingeniería de software, geomecánica, planeamiento de minas y modelamiento matemático computacional.'
       }
     ]
   },
   9: {
     id: 9,
     name: 'Facultad de Ingeniería Química y Metalurgia',
-    shortName: 'Química y Metalurgia',
+    shortName: 'Química y Metalurgia (FIQM)',
     image: '/images/facultades/quimica_metalurgia.png',
     foundationYear: '1970',
-    history: 'Especializada en la transformación fisicoquímica de la materia prima, agroindustria e industrias alimentarias.',
-    mission: 'Liderar la innovación en procesos industriales sostenibles y valor agregado a los productos nativos.',
+    history: 'Especializada en la transformación fisicoquímica de la materia prima, agroindustria andina, industrias alimentarias y bioprocesos de alto valor agregado.',
+    mission: COMMON_FACULTY_MISSION,
+    schedule: COMMON_FACULTY_SCHEDULE,
     authority: {
-      name: 'Decano(a) de FIQM',
-      title: 'Decanatura de Química y Metalurgia',
-      degree: 'Doctor(a) en Ingeniería de Procesos',
-      bio: 'Promueve la agroindustria andina, destilados y el procesamiento de granos andinos.',
-      photo: '/images/facultades/quimica_metalurgia.png'
+      name: 'Dr. Agustín Julián Portuguez Murtua',
+      title: 'Decano de la Facultad de Ingeniería Química y Metalurgia',
+      degree: 'Doctor en Ingeniería Química / Especialista en Bioprocesos Industriales',
+      bio: 'Fomenta la innovación en plantas piloto de alimentos, destilados, biofertilizantes, control de calidad y aprovechamiento integral de recursos agroindustriales nativos.',
+      photo: '/images/decanos/decanometalurgia.png',
+      email: 'agustin.portuguez@unsch.edu.pe',
+      schedule: COMMON_FACULTY_SCHEDULE
     },
     timeline: [
-      { year: '1970', title: 'Fundación', description: 'Creación para el desarrollo agroindustrial y metalúrgico.' }
+      { year: '1970', title: 'Fundación', description: 'Creación formal para el desarrollo agroindustrial y fisicoquímico regional.' }
     ],
     schoolDetails: [
       {
         name: 'Ingeniería Agroindustrial, Ingeniería Química, Industrias Alimentarias',
         creationYear: '1970',
-        creationContext: 'Transformación de materias primas con valor agregado e inocuidad.',
+        creationContext: 'Transformación de materias primas con valor agregado, inocuidad alimentaria y bioprocesos sustentables.',
         director: 'Direcciones de Escuela FIQM',
         duration: '10 semestres académicos',
-        degree: 'Ingeniero(a) Agroindustrial / Químico / Alimentos',
-        practiceCenters: ['Planta Piloto de Procesamiento de Alimentos', 'Laboratorios de Análisis Químico'],
-        description: 'Control de calidad, desarrollo de nuevos productos alimentarios y bioprocesos agroindustriales.'
+        degree: 'Bachiller en Ingeniería / Título: Ingeniero(a) Agroindustrial / Químico / Alimentos',
+        practiceCenters: ['Planta Piloto de Procesamiento de Alimentos', 'Laboratorios de Análisis Químico e Instrumental'],
+        description: 'Gestión de plantas industriales, control de calidad HACCP, desarrollo de nuevos productos alimenticios y simulación de bioprocesos.'
       }
     ]
   },
@@ -436,14 +469,16 @@ export const facultyExtendedDetails: Record<number, FacultyExtendedData> = {
     shortName: 'Nuevas Carreras 2026',
     image: '/images/facultades/nuevas_carreras.png',
     foundationYear: '2026',
-    history: 'Aprobadas por la Asamblea Universitaria en respuesta a las demandas del siglo XXI y el crecimiento urbano y de salud mental.',
-    mission: 'Formar las nuevas generaciones de arquitectos, psicólogos e ingenieros ambientales del bicentenario.',
+    history: 'Aprobadas por la Asamblea Universitaria en respuesta a las demandas del siglo XXI y el crecimiento urbano, sostenibilidad ambiental y salud mental.',
+    mission: COMMON_FACULTY_MISSION,
+    schedule: COMMON_FACULTY_SCHEDULE,
     authority: {
       name: 'Comisión de Nuevas Carreras',
       title: 'Coordinación Académica General',
       degree: 'Comisión Especial UNSCH',
-      bio: 'Encargada de la implementación de mallas curriculares modernas y laboratorios de vanguardia.',
-      photo: '/images/facultades/nuevas_carreras.png'
+      bio: 'Encargada de la implementación de mallas curriculares modernas, laboratorios de vanguardia y convenios para las escuelas de reciente creación.',
+      photo: '/images/facultades/nuevas_carreras.png',
+      schedule: COMMON_FACULTY_SCHEDULE
     },
     timeline: [
       { year: '2026', title: 'Aprobación Histórica', description: 'Incorporación formal de Ingeniería Ambiental, Arquitectura y Psicología.' }
@@ -452,12 +487,12 @@ export const facultyExtendedDetails: Record<number, FacultyExtendedData> = {
       {
         name: 'Ingeniería Ambiental, Arquitectura, Psicología',
         creationYear: '2026',
-        creationContext: 'Respuesta académica a las necesidades emergentes del país.',
+        creationContext: 'Respuesta académica integral a las necesidades emergentes del país y la región.',
         director: 'Comisiones de Implementación Académica',
         duration: '10 semestres académicos',
-        degree: 'Ingeniero(a) Ambiental / Arquitecto(a) / Psicólogo(a)',
+        degree: 'Bachiller / Título Profesional: Ingeniero(a) Ambiental / Arquitecto(a) / Psicólogo(a)',
         practiceCenters: ['Talleres de Diseño Arquitectónico', 'Laboratorios Ambientales y Cámara Gesell'],
-        description: 'Diseño urbano sostenible, evaluación de impacto ambiental y bienestar psicosocial.'
+        description: 'Diseño urbano sostenible, evaluación de impacto ambiental, psicología clínica y comunitaria.'
       }
     ]
   }

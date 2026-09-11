@@ -1,74 +1,279 @@
-.members-container {
-  padding: 40px 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.members-header {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.members-header h2 {
-  font-size: 36px;
-  color: var(--rojo-UNSCH);
-}
-
-.members-header p {
-  color: var(--gris-oscuro);
-  font-size: 18px;
-}
-
-.members-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 30px;
-}
-
-.member-card {
-  background: white;
-  padding: 20px;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-  border: 1px solid rgba(200, 16, 46, 0.05);
-  transition: all 0.3s ease;
-  text-align: center;
-}
-
-.member-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 50px rgba(200, 16, 46, 0.15);
-}
-
-.member-photo {
+/* =======================================================
+   SECCIÓN MIEMBROS DE LA JUNTA DIRECTIVA - PERFILES EJECUTIVOS
+======================================================= */
+.members-page-wrapper {
   width: 100%;
-  height: 320px;
-  object-fit: cover;
-  border-radius: 16px;
-  margin-bottom: 15px;
+  max-width: 1380px;
+  margin: 0 auto;
+  padding: 20px 0 60px 0;
 }
 
-.member-card h3 {
-  font-size: 18px;
+/* ==========================================
+   ENCABEZADO INSTITUCIONAL
+========================================== */
+.members-hero-header {
+  text-align: center;
+  max-width: 820px;
+  margin: 0 auto 50px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.members-header-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(220, 38, 38, 0.08);
+  border: 1px solid rgba(220, 38, 38, 0.25);
+  padding: 6px 16px;
+  border-radius: 9999px;
+  color: var(--rojo-fusch);
+  font-size: 13px;
   font-weight: 700;
-  color: #1a1a2e;
-  margin-bottom: 5px;
+  letter-spacing: 0.3px;
 }
 
-.member-card p {
+.members-main-title {
+  font-size: 40px;
+  font-weight: 800;
+  color: #0F172A;
+  margin: 0;
+  line-height: 1.2;
+  letter-spacing: -0.6px;
+}
+
+.members-subtitle {
+  color: var(--texto-secundario);
+  font-size: 17px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Barra de Filtro */
+.members-filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #FFFFFF;
+  padding: 6px;
+  border-radius: 9999px;
+  border: 1px solid var(--gris-medio);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  margin-top: 10px;
+}
+
+.members-filter-btn {
+  padding: 8px 20px;
+  border-radius: 9999px;
   font-size: 14px;
-  color: #6c757d;
+  font-weight: 600;
+  color: var(--texto-secundario);
+  transition: all 0.25s ease;
 }
 
+.members-filter-btn:hover {
+  color: var(--rojo-fusch);
+  background: rgba(220, 38, 38, 0.05);
+}
+
+.members-filter-btn.active {
+  background: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%);
+  color: #FFFFFF;
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.35);
+}
+
+/* ==========================================
+   GRID DE TARJETAS EJECUTIVAS
+========================================== */
+.members-executive-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 32px;
+  width: 100%;
+}
+
+/* Tarjeta Individual Ejecutiva */
+.executive-member-card {
+  position: relative;
+  background: #FFFFFF;
+  border-radius: 24px;
+  padding: 24px;
+  border: 1px solid #F1F5F9;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+/* Efecto de elevación exigido: hover:-translate-y-2 hover:shadow-2xl */
+.executive-member-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.16), 0 0 25px rgba(220, 38, 38, 0.12);
+  border-color: rgba(220, 38, 38, 0.25);
+}
+
+/* Destacado para Presidencia */
+.executive-member-card.presidency-card {
+  border-color: rgba(220, 38, 38, 0.25);
+  background: linear-gradient(to bottom, #FFFFFF 0%, #FFF5F5 100%);
+}
+
+/* Marco Dinámico con Borde Rojo Brillante */
+.executive-photo-frame {
+  position: relative;
+  width: 100%;
+  height: 340px;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 3px solid #DC2626;
+  box-shadow: 0 8px 24px rgba(220, 38, 38, 0.25), inset 0 0 15px rgba(220, 38, 38, 0.15);
+  margin-bottom: 20px;
+  background: #0F172A;
+  transition: all 0.3s ease;
+}
+
+.executive-member-card:hover .executive-photo-frame {
+  border-color: #EF4444;
+  box-shadow: 0 12px 30px rgba(220, 38, 38, 0.45);
+}
+
+.executive-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  display: block;
+}
+
+.executive-member-card:hover .executive-photo {
+  transform: scale(1.05);
+}
+
+/* Halo sutil de luz sobre la foto */
+.photo-glowing-ring {
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 -60px 50px -20px rgba(15, 23, 42, 0.6);
+  pointer-events: none;
+}
+
+/* Badge prioritario (Presidencia / Vicepresidencia) */
+.executive-priority-badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%);
+  color: #FFFFFF;
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 9999px;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* ==========================================
+   CUERPO DE INFORMACIÓN DEL MIEMBRO
+========================================== */
+.executive-info-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 10px;
+}
+
+.executive-role-pill {
+  align-self: flex-start;
+  background: rgba(220, 38, 38, 0.08);
+  color: var(--rojo-fusch);
+  font-size: 12.5px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 8px;
+  letter-spacing: 0.3px;
+  border: 1px solid rgba(220, 38, 38, 0.15);
+}
+
+.executive-name {
+  font-size: 20px;
+  font-weight: 800;
+  color: #0F172A;
+  margin: 0;
+  line-height: 1.3;
+}
+
+/* Bloque: Compromiso de Gestión */
+.executive-commitment-box {
+  margin-top: 8px;
+  background: #F8FAFC;
+  border-left: 3px solid var(--rojo-fusch);
+  padding: 12px 14px;
+  border-radius: 0 12px 12px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.commitment-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--rojo-fusch);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.commitment-quote {
+  font-size: 13.5px;
+  color: var(--texto-secundario);
+  line-height: 1.5;
+  font-style: italic;
+  margin: 0;
+}
+
+/* Acento inferior de tarjeta */
+.executive-card-bottom-accent {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #DC2626 0%, #F59E0B 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.executive-member-card:hover .executive-card-bottom-accent {
+  opacity: 1;
+}
+
+/* ==========================================
+   ADAPTABILIDAD RESPONSIVA
+========================================== */
 @media (max-width: 768px) {
-  .members-header h2 {
-    font-size: 26px;
+  .members-main-title {
+    font-size: 30px;
   }
-  .members-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
+
+  .members-subtitle {
+    font-size: 15px;
   }
-  .member-photo {
-    height: 250px;
+
+  .members-executive-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .executive-photo-frame {
+    height: 320px;
+  }
+
+  .members-filter-bar {
+    width: 100%;
+    justify-content: center;
   }
 }

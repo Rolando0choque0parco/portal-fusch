@@ -1,13 +1,183 @@
- .footer {
-  background: var(--rojo-UNSCH);
-  color: var(--blanco);
-  text-align: center;
-  padding: 20px;
-  font-size: 14px;
+/* =======================================================
+   FOOTER INSTITUCIONAL FUSCH
+======================================================= */
+.footer-wrapper {
+  background: linear-gradient(135deg, #090D16 0%, #111827 50%, #1F2937 100%);
+  color: #FFFFFF;
+  border-top: 3px solid var(--rojo-fusch);
+  padding: 50px 24px 24px 24px;
+  margin-top: auto;
+  position: relative;
 }
 
-.footer-subtitle {
-  margin-top: 5px;
+.footer-container {
+  max-width: 1380px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.footer-main-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.2fr;
+  gap: 48px;
+}
+
+/* Columna Marca */
+.footer-brand-col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.footer-logo-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.footer-logo-img {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  background: #FFFFFF;
+  padding: 4px;
+  border-radius: 12px;
+}
+
+.footer-brand-title {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: #FFFFFF;
+  margin: 0;
+  line-height: 1.1;
+}
+
+.footer-brand-sub {
   font-size: 12px;
-  opacity: 0.8;
+  color: #94A3B8;
+}
+
+.footer-brand-desc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #94A3B8;
+  margin: 0;
+  max-width: 480px;
+}
+
+.footer-gestion-badge {
+  align-self: flex-start;
+  background: rgba(220, 38, 38, 0.15);
+  border: 1px solid rgba(220, 38, 38, 0.4);
+  color: #FCA5A5;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 9999px;
+}
+
+/* Columnas de Enlaces */
+.footer-links-col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.footer-col-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin: 0;
+  position: relative;
+  padding-bottom: 8px;
+}
+
+.footer-col-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 28px;
+  height: 2.5px;
+  background: var(--rojo-fusch);
+  border-radius: 2px;
+}
+
+.footer-nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-nav-list a {
+  color: #94A3B8;
+  font-size: 14px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  display: inline-block;
+}
+
+.footer-nav-list a:hover {
+  color: #FFFFFF;
+  transform: translateX(4px);
+}
+
+.footer-schedule-hint {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 10px 14px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-top: 6px;
+}
+
+.footer-schedule-hint strong {
+  font-size: 12px;
+  color: #F59E0B;
+}
+
+.footer-schedule-hint span {
+  font-size: 12px;
+  color: #E2E8F0;
+}
+
+/* Barra Inferior */
+.footer-bottom-bar {
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: #64748B;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.footer-motto {
+  font-style: italic;
+  color: #94A3B8;
+  margin: 0;
+}
+
+@media (max-width: 860px) {
+  .footer-main-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .footer-bottom-bar {
+    flex-direction: column;
+    text-align: center;
+  }
 }

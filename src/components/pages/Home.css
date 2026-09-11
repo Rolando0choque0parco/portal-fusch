@@ -1,89 +1,132 @@
+/* =======================================================
+   HOME PAGE - ESTILO MODERNO DE ALTO IMPACTO
+======================================================= */
 .home-container {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 60px;
+  gap: 64px;
 }
 
+/* ==========================================
+   TARJETAS DE CARACTERÍSTICAS PRINCIPALES
+========================================== */
 .features {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 32px;
   width: 100%;
+  margin-top: 10px;
 }
 
 .feature-card {
-  background: #ffffff;
-  padding: 40px 30px;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  text-align: center;
-  border: 1px solid rgba(200, 16, 46, 0.05);
   position: relative;
+  background: #FFFFFF;
+  padding: 44px 32px;
+  border-radius: 24px;
+  border: 1px solid #F1F5F9;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   overflow: hidden;
 }
 
 .feature-card:hover {
-  transform: translateY(-10px) scale(1.02);
-  box-shadow: 0 20px 50px rgba(200, 16, 46, 0.15);
-  border-color: rgba(200, 16, 46, 0.3);
+  transform: translateY(-8px);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.12), 0 0 25px rgba(220, 38, 38, 0.12);
+  border-color: rgba(220, 38, 38, 0.3);
 }
 
 .feature-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 32px;
-  width: 70px;
-  height: 70px;
-  background: rgba(200, 16, 46, 0.05);
-  border-radius: 16px;
-  margin-bottom: 20px;
-  transition: all 0.3s ease;
+  font-size: 34px;
+  width: 76px;
+  height: 76px;
+  background: linear-gradient(135deg, rgba(220, 38, 38, 0.08) 0%, rgba(220, 38, 38, 0.14) 100%);
+  border-radius: 20px;
+  margin-bottom: 22px;
+  border: 1px solid rgba(220, 38, 38, 0.2);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .feature-card:hover .feature-icon {
-  background: rgba(200, 16, 46, 0.1);
-  transform: scale(1.1) rotate(-5deg);
+  transform: scale(1.12) rotate(-6deg);
+  background: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%);
+  color: #FFFFFF;
+  box-shadow: 0 10px 20px rgba(220, 38, 38, 0.35);
 }
 
 .feature-card h3 {
-  font-size: 22px;
-  font-weight: 700;
-  color: #1a1a2e;
-  margin-bottom: 12px;
+  font-size: 24px;
+  font-weight: 800;
+  color: #0F172A;
+  margin: 0 0 12px 0;
+  line-height: 1.2;
 }
 
 .feature-card p {
-  color: #6c757d;
-  font-size: 16px;
+  color: var(--texto-secundario);
+  font-size: 15.5px;
   line-height: 1.6;
-  margin-bottom: 25px;
+  margin: 0 0 28px 0;
+  flex: 1;
 }
 
 .feature-link {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: var(--rojo-UNSCH);
-  font-weight: 600;
-  font-size: 15px;
-  transition: all 0.3s ease;
+  background: rgba(220, 38, 38, 0.08);
+  color: var(--rojo-fusch);
+  font-weight: 700;
+  font-size: 14.5px;
+  padding: 10px 20px;
+  border-radius: 12px;
+  border: 1px solid rgba(220, 38, 38, 0.2);
+  transition: all 0.25s ease;
 }
 
 .feature-link:hover {
-  color: var(--rojo-oscuro);
+  background: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%);
+  color: #FFFFFF;
   gap: 12px;
+  box-shadow: 0 6px 16px rgba(220, 38, 38, 0.35);
+  transform: translateY(-1px);
+}
+
+/* Línea sutil de acento en hover */
+.feature-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #DC2626 0%, #F59E0B 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.feature-card:hover::after {
+  opacity: 1;
 }
 
 @media (max-width: 768px) {
+  .home-container {
+    gap: 40px;
+  }
+
   .features {
     grid-template-columns: 1fr;
     gap: 20px;
   }
-  
+
   .feature-card {
-    padding: 30px 20px;
+    padding: 32px 24px;
   }
 }

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { faculties, facultyExtendedDetails, type FacultyExtendedData } from '../../data/careers';
 import './Careers.css';
 
@@ -10,22 +10,52 @@ export function Careers() {
     ? facultyExtendedDetails[selectedFacultyId] 
     : undefined;
 
-  const handleOpenModal = (id: number) => {
+  const handleOpenModal = (id: number, defaultTab: 'info' | 'authority' | 'schools' | 'timeline' = 'info') => {
     setSelectedFacultyId(id);
-    setActiveTab('info');
+    setActiveTab(defaultTab);
   };
 
   const handleCloseModal = () => {
     setSelectedFacultyId(null);
   };
 
-  return (
-    <div className="careers-container">
-      <div className="careers-header">
-        <h2>🎓 Carreras de la UNSCH</h2>
-        <p>Facultades y Escuelas Profesionales de la Tricentenaria Universidad Nacional San Cristóbal de Huamanga</p>
-      </div>
+  // Cerrar modal con tecla Escape
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && selectedFacultyId !== null) {
+        handleCloseModal();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedFacultyId]);
 
+  // Bloquear scroll de la página cuando el modal está abierto
+  useEffect(() => {
+    if (selectedFacultyId !== null) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    }
+  }, [selectedFacultyId]);
+
+  return (
+    <div className="careers-page-container">
+      {/* Encabezado Principal */}
+      <header className="careers-header">
+        <div className="careers-header-badge">
+          <span>🏛️ Oferta Académica UNSCH</span>
+        </div>
+        <h2 className="careers-main-title">Facultades y Escuelas Profesionales</h2>
+        <p className="careers-subtitle">
+          Explora la historia, decanos oficiales, mallas y escuelas de la Tricentenaria Universidad Nacional San Cristóbal de Huamanga.
+        </p>
+      </header>
+
+      {/* Grid de Facultades */}
       <div className="faculties-grid">
         {faculties.map((faculty) => {
           const extended = facultyExtendedDetails[faculty.id];
@@ -40,81 +70,128 @@ export function Careers() {
                   🌾 Facultad Prioritaria FUSCH
                 </div>
               )}
-              <div className="faculty-image">
+              
+              <div className="faculty-image-container">
                 <img 
                   src={extended?.image || '/images/facultades/ciencias_agrarias.jpg'} 
                   alt={faculty.name}
+                  className="faculty-main-img"
                   loading="lazy"
                 />
-              </div>
-              <div className="faculty-content">
-                <div className="faculty-title-row">
-                  <h3>{faculty.name}</h3>
-                </div>
-
+                <div className="faculty-image-gradient" />
+                
                 {extended?.foundationYear && (
                   <span className="faculty-foundation-pill">
                     🏛️ {extended.foundationYear.split('/')[0].trim()}
                   </span>
                 )}
+              </div>
 
-                <ul className="faculty-schools-preview">
-                  {faculty.schools.map((school, index) => (
-                    <li key={index}>
-                      <span className="school-icon">📘</span> {school}
-                    </li>
-                  ))}
-                </ul>
+              <div className="faculty-content">
+                <h3 className="faculty-title">{faculty.name}</h3>
 
-                <button 
-                  type="button" 
-                  className="faculty-more-btn"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleOpenModal(faculty.id);
-                  }}
-                >
-                  Ver Historia, Decano y Carreras →
-                </button>
+                {/* Vista previa del Decano Oficial */}
+                {extended?.authority && (
+                  <div className="faculty-dean-quickview">
+                    <img 
+                      src={extended.authority.photo} 
+                      alt={extended.authority.name}
+                      className="dean-quickview-avatar"
+                      loading="lazy"
+                    />
+                    <div className="dean-quickview-info">
+                      <span className="dean-quickview-label">Decanatura Oficial</span>
+                      <strong className="dean-quickview-name">{extended.authority.name}</strong>
+                    </div>
+                  </div>
+                )}
+
+                {/* Lista compacta de escuelas */}
+                <div className="faculty-schools-preview">
+                  <span className="schools-preview-title">Escuelas Profesionales:</span>
+                  <div className="schools-tags-cluster">
+                    {faculty.schools.map((school, index) => (
+                      <span key={index} className="school-tag-pill">
+                        📘 {school}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="faculty-card-actions">
+                  <button 
+                    type="button" 
+                    className="faculty-more-btn"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleOpenModal(faculty.id, 'info');
+                    }}
+                  >
+                    <span>Ver Historia y Carreras</span>
+                    <span>→</span>
+                  </button>
+                  {extended?.authority && (
+                    <button
+                      type="button"
+                      className="faculty-dean-btn"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleOpenModal(faculty.id, 'authority');
+                      }}
+                      title="Ver información del Decano"
+                    >
+                      👔 Decano
+                    </button>
+                  )}
+                </div>
               </div>
             </div>
           );
         })}
       </div>
 
-      {/* Modal enriquecido para ver detalles de la facultad */}
+      {/* Modal Enriquecido para Detalles de la Facultad */}
       {selectedFaculty && (
         <div className="faculty-modal-overlay" onClick={handleCloseModal}>
-          <div className="faculty-modal" onClick={(e) => e.stopPropagation()}>
+          <div 
+            className="faculty-modal" 
+            onClick={(e) => e.stopPropagation()}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modal-faculty-title"
+          >
             <button 
               type="button" 
               className="faculty-modal-close" 
               onClick={handleCloseModal}
-              aria-label="Cerrar modal"
+              aria-label="Cerrar ventana"
             >
               ✕
             </button>
 
-            {/* Cabecera del modal */}
+            {/* Cabecera del modal con efecto hero */}
             <div className="faculty-modal-hero">
               <div className="faculty-modal-image">
                 <img src={selectedFaculty.image} alt={selectedFaculty.name} />
-                <div className="faculty-modal-image-overlay">
+                <div className="faculty-modal-image-overlay" />
+                <div className="faculty-modal-hero-content">
                   <span className="modal-foundation-badge">
                     Fundación: {selectedFaculty.foundationYear}
                   </span>
+                  <h2 id="modal-faculty-title">{selectedFaculty.name}</h2>
+                  <p className="faculty-modal-subtitle">
+                    Universidad Nacional de San Cristóbal de Huamanga
+                  </p>
                 </div>
-              </div>
-              <div className="faculty-modal-title-area">
-                <h2>{selectedFaculty.name}</h2>
-                <p className="faculty-modal-subtitle">Universidad Nacional de San Cristóbal de Huamanga</p>
               </div>
             </div>
 
-            {/* Barra de pestañas de navegación */}
-            <div className="faculty-modal-tabs">
+            {/* Barra de pestañas con diseño píldora moderno */}
+            <div className="faculty-modal-tabs" role="tablist">
               <button 
                 type="button" 
+                role="tab"
+                aria-selected={activeTab === 'info'}
                 className={`tab-btn ${activeTab === 'info' ? 'active' : ''}`}
                 onClick={() => setActiveTab('info')}
               >
@@ -122,6 +199,8 @@ export function Careers() {
               </button>
               <button 
                 type="button" 
+                role="tab"
+                aria-selected={activeTab === 'authority'}
                 className={`tab-btn ${activeTab === 'authority' ? 'active' : ''}`}
                 onClick={() => setActiveTab('authority')}
               >
@@ -129,6 +208,8 @@ export function Careers() {
               </button>
               <button 
                 type="button" 
+                role="tab"
+                aria-selected={activeTab === 'schools'}
                 className={`tab-btn ${activeTab === 'schools' ? 'active' : ''}`}
                 onClick={() => setActiveTab('schools')}
               >
@@ -137,6 +218,8 @@ export function Careers() {
               {selectedFaculty.timeline && selectedFaculty.timeline.length > 0 && (
                 <button 
                   type="button" 
+                  role="tab"
+                  aria-selected={activeTab === 'timeline'}
                   className={`tab-btn ${activeTab === 'timeline' ? 'active' : ''}`}
                   onClick={() => setActiveTab('timeline')}
                 >
@@ -145,9 +228,9 @@ export function Careers() {
               )}
             </div>
 
-            {/* Contenido según la pestaña activa */}
+            {/* Contenido dinámico según pestaña activa */}
             <div className="faculty-modal-tab-content">
-              {/* PESTAÑA: HISTORIA Y MISIÓN */}
+              {/* PESTAÑA 1: HISTORIA Y MISIÓN */}
               {activeTab === 'info' && (
                 <div className="tab-pane info-pane">
                   <div className="modal-section-card">
@@ -160,52 +243,100 @@ export function Careers() {
                     <p>{selectedFaculty.mission}</p>
                   </div>
 
+                  <div className="modal-schedule-card">
+                    <span className="schedule-card-icon">🕐</span>
+                    <div>
+                      <strong>Horario de Atención al Estudiante:</strong>
+                      <p>{selectedFaculty.schedule || "8:30 am – 12:30 pm y 2:30 pm – 4:00 pm"}</p>
+                    </div>
+                  </div>
+
                   {selectedFaculty.authority && (
-                    <div className="dean-mini-card">
+                    <div 
+                      className="dean-mini-card"
+                      onClick={() => setActiveTab('authority')}
+                      role="button"
+                      tabIndex={0}
+                    >
                       <img 
                         src={selectedFaculty.authority.photo} 
                         alt={selectedFaculty.authority.name} 
                         className="dean-mini-avatar"
                       />
-                      <div>
+                      <div className="dean-mini-info">
+                        <span className="dean-mini-tag">Decano Oficial • Clic para ver perfil</span>
                         <h5>{selectedFaculty.authority.name}</h5>
                         <p className="dean-mini-title">{selectedFaculty.authority.title}</p>
-                        <p className="dean-mini-degree">{selectedFaculty.authority.degree}</p>
                       </div>
+                      <span className="dean-mini-arrow">→</span>
                     </div>
                   )}
                 </div>
               )}
 
-              {/* PESTAÑA: DECANATO Y AUTORIDADES */}
+              {/* PESTAÑA 2: DECANATO Y AUTORIDADES (REQUERIMIENTO 5) */}
               {activeTab === 'authority' && selectedFaculty.authority && (
                 <div className="tab-pane authority-pane">
-                  <div className="dean-full-card">
-                    <div className="dean-photo-container">
+                  <div className="dean-executive-card">
+                    <div className="dean-portrait-container">
                       <img 
                         src={selectedFaculty.authority.photo} 
                         alt={selectedFaculty.authority.name} 
-                        className="dean-full-photo"
+                        className="dean-portrait-photo"
                       />
-                      <span className="dean-verified-badge">Autoridad Oficial UNSCH</span>
+                      <div className="dean-portrait-glow" />
+                      <span className="dean-verified-pill">
+                        ✓ Autoridad Oficial UNSCH
+                      </span>
                     </div>
-                    <div className="dean-full-info">
-                      <span className="dean-label">Decanatura de Facultad</span>
-                      <h3>{selectedFaculty.authority.name}</h3>
-                      <p className="dean-official-title">{selectedFaculty.authority.title}</p>
+
+                    <div className="dean-details-column">
+                      <span className="dean-label-pill">Decanatura de Facultad</span>
+                      <h3 className="dean-official-name">{selectedFaculty.authority.name}</h3>
+                      <p className="dean-official-role">{selectedFaculty.authority.title}</p>
                       <p className="dean-academic-degree">🎓 {selectedFaculty.authority.degree}</p>
+
+                      {/* Correo Electrónico Institucional si está presente */}
+                      {selectedFaculty.authority.email && (
+                        <div className="dean-contact-row">
+                          <a 
+                            href={`mailto:${selectedFaculty.authority.email}`} 
+                            className="dean-email-link"
+                            title="Enviar correo institucional"
+                          >
+                            <span className="email-icon">✉️</span>
+                            <span>{selectedFaculty.authority.email}</span>
+                          </a>
+                        </div>
+                      )}
+
+                      {/* Horario de Atención Oficial */}
+                      <div className="dean-schedule-badge">
+                        <span className="schedule-badge-icon">🕐</span>
+                        <div className="schedule-badge-text">
+                          <strong>Horario de Atención:</strong>
+                          <span>{selectedFaculty.authority.schedule || selectedFaculty.schedule || "8:30 am – 12:30 pm y 2:30 pm – 4:00 pm"}</span>
+                        </div>
+                      </div>
+
+                      {/* Reseña bio */}
                       <div className="dean-bio-box">
                         <p>{selectedFaculty.authority.bio}</p>
                       </div>
-                      <div className="dean-commitment-quote">
-                        <em>"Al servicio del desarrollo agrario, la excelencia académica y el bienestar estudiantil de la comunidad san cristobalina."</em>
+
+                      {/* Misión Compartida de la Facultad */}
+                      <div className="dean-mission-callout">
+                        <span className="mission-callout-badge">🎯 Misión de la Facultad</span>
+                        <p className="mission-callout-text">
+                          "{selectedFaculty.mission}"
+                        </p>
                       </div>
                     </div>
                   </div>
                 </div>
               )}
 
-              {/* PESTAÑA: ESCUELAS PROFESIONALES */}
+              {/* PESTAÑA 3: ESCUELAS PROFESIONALES */}
               {activeTab === 'schools' && (
                 <div className="tab-pane schools-pane">
                   <div className="schools-cards-list">
@@ -253,7 +384,7 @@ export function Careers() {
                 </div>
               )}
 
-              {/* PESTAÑA: LÍNEA DE TIEMPO */}
+              {/* PESTAÑA 4: LÍNEA DE TIEMPO */}
               {activeTab === 'timeline' && selectedFaculty.timeline && (
                 <div className="tab-pane timeline-pane">
                   <div className="timeline-container">

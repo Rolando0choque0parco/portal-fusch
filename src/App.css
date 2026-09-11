@@ -2,21 +2,29 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  position: relative;
+  background-color: var(--bg-page);
 }
 
 .main-content {
   flex: 1;
-  max-width: 1400px;
+  max-width: 1380px;
   width: 100%;
   margin: 0 auto;
-  padding: 20px;
-  animation: fadeInUp 0.5s ease;
+  padding: 24px 20px 60px 20px;
+  animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    padding: 16px 14px 48px 14px;
+  }
 }
 
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
