@@ -1,0 +1,168 @@
+/* =========================================================
+   OVERLAY A PANTALLA COMPLETA - CAMPAÑA DE APOYO SOLIDARIO
+   ========================================================= */
+
+.apoyo-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(12, 12, 18, 0.94);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  animation: apoyoFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+  cursor: pointer;
+}
+
+@keyframes apoyoFadeIn {
+  from {
+    opacity: 0;
+    backdrop-filter: blur(0px);
+  }
+  to {
+    opacity: 1;
+    backdrop-filter: blur(10px);
+  }
+}
+
+/* Botón de cierre visible y destacado en la esquina superior derecha */
+.apoyo-close-btn {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  z-index: 1000000;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(200, 16, 46, 0.95);
+  color: #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 20px rgba(200, 16, 46, 0.4);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.apoyo-close-btn:hover {
+  background: #a30c24;
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 0 0 30px rgba(200, 16, 46, 0.6);
+  border-color: #ffffff;
+}
+
+.apoyo-close-btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.apoyo-close-icon {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.apoyo-close-label {
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+/* Contenedor central a pantalla completa (100vw x 100vh) */
+.apoyo-image-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 20px 40px;
+  box-sizing: border-box;
+  cursor: default;
+}
+
+/* La imagen ocupa toda la pantalla de forma responsiva tipo lightbox */
+.apoyo-image {
+  max-width: 95vw;
+  max-height: 92vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 16px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 35px rgba(200, 16, 46, 0.25);
+  animation: apoyoScaleUp 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+@keyframes apoyoScaleUp {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Barra inferior discreta */
+.apoyo-bottom-hint {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #e0e0e0;
+  font-size: 13px;
+  padding: 6px 18px;
+  border-radius: 20px;
+  letter-spacing: 0.3px;
+  backdrop-filter: blur(6px);
+  pointer-events: auto;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+}
+
+.apoyo-bottom-hint:hover {
+  color: #ffffff;
+  background: rgba(200, 16, 46, 0.6);
+}
+
+/* Adaptación para pantallas móviles */
+@media (max-width: 768px) {
+  .apoyo-close-btn {
+    top: 14px;
+    right: 14px;
+    padding: 8px 14px;
+    font-size: 13px;
+  }
+  
+  .apoyo-image-container {
+    padding: 65px 12px 35px;
+  }
+
+  .apoyo-image {
+    max-width: 96vw;
+    max-height: 85vh;
+    border-radius: 10px;
+  }
+
+  .apoyo-bottom-hint {
+    font-size: 11px;
+    padding: 5px 12px;
+    max-width: 90%;
+    text-align: center;
+    bottom: 8px;
+  }
+}

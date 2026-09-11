@@ -8,11 +8,16 @@ import Documents from './components/pages/Documents'
 import Suggestions from './components/pages/Suggestions'
 import Admin from './components/pages/Admin'
 import Activities from './components/pages/Activities'
+import ApoyoModal from './components/common/ApoyoModal'
+import LikeButton from './components/common/LikeButton'
 import './App.css'
 
 function App() {
   return (
     <div className="app">
+      {/* Overlay global a pantalla completa para la campaña de apoyo solidario */}
+      <ApoyoModal />
+
       <Navbar />
       <main className="main-content">
         <Routes>
@@ -26,6 +31,9 @@ function App() {
         </Routes>
       </main>
       <Footer />
+
+      {/* Botón flotante interactivo "Me encanta la página" con contador persistente */}
+      <LikeButton />
     </div>
   )
 }

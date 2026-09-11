@@ -3,6 +3,22 @@ import './Activities.css';
 
 const activities = [
   {
+    id: 15,
+    title: 'Jornada de Reforestación y Áreas Verdes',
+    folder: '/images/areas_verdes/',
+    date: '8 de Septiembre, 2026',
+    description: 'Jornada universitaria de arborización, siembra de plantones y recuperación de áreas verdes en la Ciudad Universitaria. Una iniciativa de la FUSCH comprometida con la sostenibilidad ambiental y el embellecimiento de nuestros espacios académicos.',
+    images: ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg']
+  },
+  {
+    id: 16,
+    title: 'Movilización y Diálogo de las Cinco Escuelas',
+    folder: '/images/cinco_escuelas/',
+    date: '7 de Septiembre, 2026',
+    description: 'Movilización pacífica y mesa de trabajo de las cinco escuelas profesionales de la Facultad de Ciencias Agrarias en coordinación con la FUSCH y las autoridades universitarias en el Rectorado, consolidando acuerdos y exigencias estudiantiles.',
+    images: ['imagen1.jpg', 'imagen2.jpg', 'imagen3.jpg', 'imagen4.jpg', 'imagen5.jpg', 'imagen6.jpg', 'imagen7.jpg', 'imagen8.jpg', 'imagen9.jpg']
+  },
+  {
     id: 12,
     title: 'Minka Universitaria',
     folder: '/images/minka/',

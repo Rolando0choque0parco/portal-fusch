@@ -1,4 +1,42 @@
- export const faculties = [
+export interface SchoolDetail {
+  name: string;
+  creationYear: string;
+  creationContext: string;
+  director: string;
+  duration: string;
+  degree: string;
+  practiceCenters: string[];
+  description: string;
+}
+
+export interface TimelineMilestone {
+  year: string;
+  title: string;
+  description: string;
+}
+
+export interface AuthorityInfo {
+  name: string;
+  title: string;
+  degree: string;
+  bio: string;
+  photo: string;
+}
+
+export interface FacultyExtendedData {
+  id: number;
+  name: string;
+  shortName: string;
+  image: string;
+  foundationYear: string;
+  history: string;
+  mission: string;
+  authority: AuthorityInfo;
+  timeline: TimelineMilestone[];
+  schoolDetails: SchoolDetail[];
+}
+
+export const faculties = [
   {
     id: 1,
     name: 'Ciencias Agrarias',
@@ -49,4 +87,378 @@
     name: 'Nuevas Carreras 2026',
     schools: ['Ingeniería Ambiental', 'Arquitectura', 'Psicología']
   }
-]
+];
+
+export const facultyExtendedDetails: Record<number, FacultyExtendedData> = {
+  1: {
+    id: 1,
+    name: 'Facultad de Ciencias Agrarias (FCAC)',
+    shortName: 'Ciencias Agrarias',
+    image: '/images/facultades/ciencias_agrarias.jpg',
+    foundationYear: '1960 (Instituto de Ingeniería Rural y Zootecnia) / 1984 (Facultad)',
+    history: 'La Facultad de Ciencias Agrarias de la UNSCH tiene sus orígenes históricos vinculados a la reactivación de la universidad mediante la Ley N.º 12828 (1957) y su reapertura en 1959. En 1960 se instituyó como Instituto de Ingeniería Rural y Zootecnia, transformándose en la actual Facultad con la Ley Universitaria 23733 en 1984. Ha sido pilar indiscutible de la producción agropecuaria, el manejo sustentable del suelo andino y la seguridad alimentaria de Ayacucho y del Perú.',
+    mission: 'Formar profesionales de excelencia ética, científica y tecnológica en agronomía, ingeniería agrícola, medicina veterinaria y gestión agroforestal, liderando la investigación e innovación agropecuaria sustentable y la vinculación con las comunidades andino-amazónicas.',
+    authority: {
+      name: 'Dr. Felipe Escobar Ramírez',
+      title: 'Decano de la Facultad de Ciencias Agrarias',
+      degree: 'Doctor en Ciencias Agrarias / Docente Principal UNSCH',
+      bio: 'Lidera la gestión académica y científica de la FCAC. Comprometido con la modernización de los laboratorios especializados, la acreditación de calidad, la protección del patrimonio agropecuario regional y el equipamiento integral de los centros experimentales de Wayllapampa y Canaán.',
+      photo: '/images/facultades/decano_ciencias_agrarias.jpg'
+    },
+    timeline: [
+      {
+        year: '1677',
+        title: 'Fundación de la UNSCH',
+        description: 'Fundación de la Real y Pontificia Universidad Nacional San Cristóbal de Huamanga por el obispo Don Cristóbal de Castilla y Zamora.'
+      },
+      {
+        year: '1957 - 1959',
+        title: 'Ley 12828 y Reapertura Histórica',
+        description: 'Reapertura oficial de la UNSCH con énfasis prioritario en carreras orientadas al desarrollo rural andino.'
+      },
+      {
+        year: '1960',
+        title: 'Instituto de Ingeniería Rural y Zootecnia',
+        description: 'Inicio formal de la formación agronómica y pecuaria moderna en la Ciudad Universitaria.'
+      },
+      {
+        year: '1984',
+        title: 'Constitución como Facultad (Ley 23733)',
+        description: 'Consolidación estructural como Facultad de Ciencias Agrarias, integrando cátedras e investigación experimental.'
+      },
+      {
+        year: '1994 - 1996',
+        title: 'Creación de Ing. Agrícola y Medicina Veterinaria',
+        description: 'Apertura de la Escuela de Formación Profesional de Ingeniería Agrícola (1994) y Medicina Veterinaria (R.R. 109-96 en 1996).'
+      },
+      {
+        year: '2009 - 2010',
+        title: 'Expansión a Pichari: Ing. Agroforestal',
+        description: 'Creación oficial mediante Ley N.º 29413 de la Escuela Profesional de Ingeniería Agroforestal con sede en Pichari - VRAEM.'
+      }
+    ],
+    schoolDetails: [
+      {
+        name: 'Escuela Profesional de Agronomía',
+        creationYear: '1959 - 1960 (Fundacional en la Reapertura)',
+        creationContext: 'Creada para liderar la transformación agrícola regional, optimización de cultivos andinos y seguridad alimentaria.',
+        director: 'Dirección de la Escuela Profesional de Agronomía',
+        duration: '10 semestres académicos (5 años)',
+        degree: 'Bachiller en Ciencias Agrarias / Título Profesional: Ingeniero(a) Agrónomo(a)',
+        practiceCenters: ['Centro Experimental Wayllapampa', 'Centro Experimental Canaán', 'Laboratorio de Entomología y Fitopatología'],
+        description: 'Forma ingenieros capacitados en manejo agronómico sustentable, mejoramiento genético vegetal, agroecología, sanidad vegetal y gestión de agronegocios con alto compromiso ambiental.'
+      },
+      {
+        name: 'Escuela Profesional de Ingeniería Agrícola',
+        creationYear: '1994 (Iniciada como Ingeniería Rural)',
+        creationContext: 'Impulsada por la urgente necesidad de tecnificación del riego y gestión hidrológica de las cuencas ayacuchanas.',
+        director: 'Dirección de la Escuela Profesional de Ingeniería Agrícola',
+        duration: '10 semestres académicos (5 años)',
+        degree: 'Bachiller en Ingeniería Agrícola / Título Profesional: Ingeniero(a) Agrícola',
+        practiceCenters: ['Laboratorio de Mecánica de Suelos y Aguas', 'Estaciones Hidrometeorológicas', 'Centro Experimental Wayllapampa'],
+        description: 'Especialistas en diseño y construcción de obras de riego tecnificado, represamientos, conservación de suelos y agua, mecanización agropecuaria y ordenamiento territorial de cuencas hidrográficas.'
+      },
+      {
+        name: 'Escuela Profesional de Medicina Veterinaria',
+        creationYear: '1995 (Aprobada por Resolución Rectoral R.R. 109-96)',
+        creationContext: 'Creada para asegurar la sanidad animal, desarrollo pecuario y salud pública veterinaria en el centro y sur del país.',
+        director: 'Dirección de la Escuela Profesional de Medicina Veterinaria',
+        duration: '10 semestres académicos (5 años)',
+        degree: 'Bachiller en Medicina Veterinaria / Título Profesional: Médico(a) Veterinario(a)',
+        practiceCenters: ['Clínica Veterinaria Universitaria', 'Módulos Pecuarios Canaán', 'Laboratorio de Patología y Microbiología Animal'],
+        description: 'Profesionales líderes en medicina preventiva y curativa de especies menores y mayores, cirugía animal, bioseguridad, epidemiología, inocuidad alimentaria y producción pecuaria sostenible.'
+      },
+      {
+        name: 'Escuela Profesional de Ingeniería Agroforestal',
+        creationYear: '2009 (Oficializada por Ley N.º 29413 - Sede Pichari)',
+        creationContext: 'Establecida estratégicamente en el VRAEM para responder al desafío ecológico y productivo de la ceja de selva y selva alta.',
+        director: 'Dirección de la Escuela Profesional de Ingeniería Agroforestal',
+        duration: '10 semestres académicos (5 años)',
+        degree: 'Bachiller en Ingeniería Agroforestal / Título Profesional: Ingeniero(a) Agroforestal',
+        practiceCenters: ['Campus y Parcelas Demostrativas Sede Pichari', 'Bosques Experimentales VRAEM', 'Nuevo Polideportivo y Complejo Pichari'],
+        description: 'Forma profesionales expertos en silvicultura, diseño de sistemas agroforestales multicapa (cacao, café, especies maderables nativas), restauración de suelos degradados y bioeconomía amazónica.'
+      }
+    ]
+  },
+  2: {
+    id: 2,
+    name: 'Facultad de Ciencias Biológicas',
+    shortName: 'Ciencias Biológicas',
+    image: '/images/facultades/ciencias_biologicas.jpg',
+    foundationYear: '1965',
+    history: 'Creada para investigar la megadiversidad altoandina y la conservación de los ecosistemas de la cuenca del Mantaro y Pampas.',
+    mission: 'Formar biólogos con sólida formación científica e investigativa en biotecnología, ecología y gestión ambiental.',
+    authority: {
+      name: 'Decano(a) de Ciencias Biológicas',
+      title: 'Decanatura de Facultad',
+      degree: 'Doctor(a) en Biología',
+      bio: 'Lidera la investigación científica en flora y fauna andina y la conservación de recursos genéticos.',
+      photo: '/images/facultades/ciencias_biologicas.jpg'
+    },
+    timeline: [
+      { year: '1965', title: 'Fundación', description: 'Creación de la facultad para la investigación de la biodiversidad.' },
+      { year: '1990', title: 'Laboratorios de Biotecnología', description: 'Modernización del estudio molecular andino.' }
+    ],
+    schoolDetails: [
+      {
+        name: 'Escuela Profesional de Biología',
+        creationYear: '1965',
+        creationContext: 'Estudio sistemático de la biodiversidad y ecosistemas andinos.',
+        director: 'Dirección de Biología',
+        duration: '10 semestres académicos',
+        degree: 'Licenciado(a) en Biología',
+        practiceCenters: ['Herbario Huamangensis', 'Museo de Historia Natural UNSCH'],
+        description: 'Investigación en recursos biológicos, microbiología, genética y gestión ambiental.'
+      }
+    ]
+  },
+  3: {
+    id: 3,
+    name: 'Facultad de Ciencias de la Educación',
+    shortName: 'Ciencias de la Educación',
+    image: '/images/facultades/ciencias_de_la_educacion.png',
+    foundationYear: '1960',
+    history: 'Institución pionera en la formación pedagógica e intercultural bilingüe para la región de Ayacucho y el sur peruano.',
+    mission: 'Formar educadores innovadores y comprometidos con la calidad educativa y el desarrollo sociocultural.',
+    authority: {
+      name: 'Decano(a) de Educación',
+      title: 'Decanatura de Educación',
+      degree: 'Doctor(a) en Ciencias de la Educación',
+      bio: 'Promueve la educación intercultural, la investigación pedagógica y la formación de docentes líderes.',
+      photo: '/images/facultades/ciencias_de_la_educacion.png'
+    },
+    timeline: [
+      { year: '1960', title: 'Creación', description: 'Nacimiento de la Facultad de Educación con la reapertura.' }
+    ],
+    schoolDetails: [
+      {
+        name: 'Educación Inicial, Primaria, Secundaria y Física',
+        creationYear: '1960',
+        creationContext: 'Formación docente integral con enfoque humanista y bilingüe.',
+        director: 'Direcciones de Escuela de Educación',
+        duration: '10 semestres académicos',
+        degree: 'Licenciado(a) en Educación',
+        practiceCenters: ['Institución Educativa de Aplicación Guamán Poma de Ayala'],
+        description: 'Docentes capacitados en pedagogía moderna, TIC aplicadas a la enseñanza e investigación educativa.'
+      }
+    ]
+  },
+  4: {
+    id: 4,
+    name: 'Facultad de Ciencias de la Salud',
+    shortName: 'Ciencias de la Salud',
+    image: '/images/facultades/ciencias_de_la_salud.jpg',
+    foundationYear: '1975',
+    history: 'Comprometida con la salud pública, la formación de profesionales médicos, enfermeros y obstetras de primer nivel.',
+    mission: 'Formar profesionales de la salud con vocación humanística, ética y sólida base científica.',
+    authority: {
+      name: 'Decano(a) de Ciencias de la Salud',
+      title: 'Decanatura de Ciencias de la Salud',
+      degree: 'Doctor(a) en Ciencias Médicas',
+      bio: 'Fortalece los convenios clínicos hospitalarios y la investigación en salud comunitaria.',
+      photo: '/images/facultades/ciencias_de_la_salud.jpg'
+    },
+    timeline: [
+      { year: '1975', title: 'Creación', description: 'Fundación del programa de ciencias biomédicas y de la salud.' },
+      { year: '2004', title: 'Medicina Humana', description: 'Creación de la Escuela Profesional de Medicina Humana.' }
+    ],
+    schoolDetails: [
+      {
+        name: 'Medicina Humana, Enfermería, Obstetricia, Farmacia y Bioquímica',
+        creationYear: '1975 - 2004',
+        creationContext: 'Desarrollo de servicios médicos y de prevención sanitaria regional.',
+        director: 'Direcciones de Escuelas de la Salud',
+        duration: '10 a 14 semestres académicos',
+        degree: 'Médico Cirujano / Licenciado(a) en Enfermería, Obstetricia, Farmacia',
+        practiceCenters: ['Hospital Regional de Ayacucho', 'Centros de Salud MINSA / EsSalud'],
+        description: 'Cuidado integral del paciente, salud reproductiva, bioquímica clínica y salud comunitaria.'
+      }
+    ]
+  },
+  5: {
+    id: 5,
+    name: 'Facultad de Ciencias Económicas, Administrativas y Contables',
+    shortName: 'Ciencias Económicas',
+    image: '/images/facultades/fcea.png',
+    foundationYear: '1962',
+    history: 'Semillero de líderes empresariales, gestores públicos y contadores que dinamizan la economía nacional.',
+    mission: 'Formar profesionales competitivos en finanzas, gestión pública, contabilidad y emprendimiento.',
+    authority: {
+      name: 'Decano(a) de FCEA',
+      title: 'Decanatura de Ciencias Económicas',
+      degree: 'Doctor(a) en Ciencias Empresariales',
+      bio: 'Impulsa la innovación financiera, la gestión gubernamental transparente y el emprendimiento.',
+      photo: '/images/facultades/fcea.png'
+    },
+    timeline: [
+      { year: '1962', title: 'Fundación', description: 'Inauguración de cátedras económicas y contables en la UNSCH.' }
+    ],
+    schoolDetails: [
+      {
+        name: 'Administración de Empresas, Economía, Contabilidad',
+        creationYear: '1962',
+        creationContext: 'Formación empresarial y gestión económica regional.',
+        director: 'Direcciones de Escuela FCEA',
+        duration: '10 semestres académicos',
+        degree: 'Licenciado(a) en Administración / Economista / Contador(a) Público',
+        practiceCenters: ['Centros de Asesoría Empresarial y Contable'],
+        description: 'Auditoría, formulación de proyectos de inversión, dirección estratégica y finanzas.'
+      }
+    ]
+  },
+  6: {
+    id: 6,
+    name: 'Facultad de Ciencias Sociales',
+    shortName: 'Ciencias Sociales',
+    image: '/images/facultades/ciencias_sociales.png',
+    foundationYear: '1968',
+    history: 'Referente nacional en antropología andina, arqueología de Wari y análisis de las dinámicas sociales del Perú.',
+    mission: 'Generar conocimiento crítico sobre los procesos históricos, culturales y sociales de la nación.',
+    authority: {
+      name: 'Decano(a) de Ciencias Sociales',
+      title: 'Decanatura de Ciencias Sociales',
+      degree: 'Doctor(a) en Antropología y Sociedad',
+      bio: 'Promueve la investigación etnográfica y la preservación del patrimonio histórico ayacuchano.',
+      photo: '/images/facultades/ciencias_sociales.png'
+    },
+    timeline: [
+      { year: '1968', title: 'Creación', description: 'Fundación de la Facultad orientada al estudio social andino.' }
+    ],
+    schoolDetails: [
+      {
+        name: 'Antropología Social, Arqueología, Historia, Sociología, Trabajo Social',
+        creationYear: '1968',
+        creationContext: 'Reconocimiento de la herencia milenaria y desarrollo social.',
+        director: 'Direcciones de Escuela de Ciencias Sociales',
+        duration: '10 semestres académicos',
+        degree: 'Licenciado(a) en Ciencias Sociales',
+        practiceCenters: ['Complejo Arqueológico Wari', 'Archivos Históricos de Ayacucho'],
+        description: 'Investigación antropológica, excavación y preservación arqueológica, políticas de bienestar social.'
+      }
+    ]
+  },
+  7: {
+    id: 7,
+    name: 'Facultad de Derecho y Ciencias Políticas',
+    shortName: 'Derecho y CC.PP.',
+    image: '/images/facultades/derecho.png',
+    foundationYear: '1677',
+    history: 'Una de las facultades de derecho más antiguas y respetadas de América, fundada con la misma universidad en 1677.',
+    mission: 'Formar juristas con profundo sentido de la justicia, defensa del Estado de derecho y probidad.',
+    authority: {
+      name: 'Decano(a) de Derecho',
+      title: 'Decanatura de Derecho',
+      degree: 'Doctor(a) en Derecho',
+      bio: 'Defensor de los derechos humanos y la modernización del sistema procesal.',
+      photo: '/images/facultades/derecho.png'
+    },
+    timeline: [
+      { year: '1677', title: 'Fundación Pontificia', description: 'Inicio de la enseñanza del Derecho Canónico y Civil.' }
+    ],
+    schoolDetails: [
+      {
+        name: 'Escuela Profesional de Derecho',
+        creationYear: '1677 / Reactivada en 1959',
+        creationContext: 'Pilar de la jurisprudencia y la defensa de los derechos fundamentales.',
+        director: 'Dirección de la Escuela de Derecho',
+        duration: '12 semestres académicos (6 años)',
+        degree: 'Abogado(a) / Bachiller en Derecho',
+        practiceCenters: ['Consultorio Jurídico Gratuito UNSCH', 'Corte Superior de Justicia de Ayacucho'],
+        description: 'Litigio penal, constitucional, civil, laboral y asesoría jurídica corporativa y comunitaria.'
+      }
+    ]
+  },
+  8: {
+    id: 8,
+    name: 'Facultad de Ingeniería de Minas, Geología y Civil',
+    shortName: 'Minas, Geología y Civil',
+    image: '/images/facultades/geologia_minas_civil.jpg',
+    foundationYear: '1965',
+    history: 'Cuna de ingenieros que han construido la infraestructura y desarrollado la geología y minería responsable del país.',
+    mission: 'Formar ingenieros altamente capacitados en diseño estructural, explotación minera sostenible y tecnología.',
+    authority: {
+      name: 'Decano(a) de FIMGC',
+      title: 'Decanatura de Minas, Geología y Civil',
+      degree: 'Doctor(a) en Ingeniería',
+      bio: 'Fomenta la tecnología sismorresistente, la minería ambiental y la transformación digital.',
+      photo: '/images/facultades/geologia_minas_civil.jpg'
+    },
+    timeline: [
+      { year: '1965', title: 'Fundación', description: 'Inauguración de la formación en ingeniería pesada y minera.' }
+    ],
+    schoolDetails: [
+      {
+        name: 'Ingeniería Civil, Ingeniería de Sistemas, Minas, Físico Matemáticas',
+        creationYear: '1965 - 1990',
+        creationContext: 'Infraestructura vial, edificaciones, software y recursos minerales.',
+        director: 'Direcciones de Escuela FIMGC',
+        duration: '10 semestres académicos',
+        degree: 'Ingeniero(a) Colegiado(a)',
+        practiceCenters: ['Laboratorio de Estructuras y Pavimentos', 'Data Center Universitario'],
+        description: 'Cálculo de estructuras, desarrollo de software, geomecánica y exploración geológica.'
+      }
+    ]
+  },
+  9: {
+    id: 9,
+    name: 'Facultad de Ingeniería Química y Metalurgia',
+    shortName: 'Química y Metalurgia',
+    image: '/images/facultades/quimica_metalurgia.png',
+    foundationYear: '1970',
+    history: 'Especializada en la transformación fisicoquímica de la materia prima, agroindustria e industrias alimentarias.',
+    mission: 'Liderar la innovación en procesos industriales sostenibles y valor agregado a los productos nativos.',
+    authority: {
+      name: 'Decano(a) de FIQM',
+      title: 'Decanatura de Química y Metalurgia',
+      degree: 'Doctor(a) en Ingeniería de Procesos',
+      bio: 'Promueve la agroindustria andina, destilados y el procesamiento de granos andinos.',
+      photo: '/images/facultades/quimica_metalurgia.png'
+    },
+    timeline: [
+      { year: '1970', title: 'Fundación', description: 'Creación para el desarrollo agroindustrial y metalúrgico.' }
+    ],
+    schoolDetails: [
+      {
+        name: 'Ingeniería Agroindustrial, Ingeniería Química, Industrias Alimentarias',
+        creationYear: '1970',
+        creationContext: 'Transformación de materias primas con valor agregado e inocuidad.',
+        director: 'Direcciones de Escuela FIQM',
+        duration: '10 semestres académicos',
+        degree: 'Ingeniero(a) Agroindustrial / Químico / Alimentos',
+        practiceCenters: ['Planta Piloto de Procesamiento de Alimentos', 'Laboratorios de Análisis Químico'],
+        description: 'Control de calidad, desarrollo de nuevos productos alimentarios y bioprocesos agroindustriales.'
+      }
+    ]
+  },
+  10: {
+    id: 10,
+    name: 'Nuevas Carreras Aprobadas 2026',
+    shortName: 'Nuevas Carreras 2026',
+    image: '/images/facultades/nuevas_carreras.png',
+    foundationYear: '2026',
+    history: 'Aprobadas por la Asamblea Universitaria en respuesta a las demandas del siglo XXI y el crecimiento urbano y de salud mental.',
+    mission: 'Formar las nuevas generaciones de arquitectos, psicólogos e ingenieros ambientales del bicentenario.',
+    authority: {
+      name: 'Comisión de Nuevas Carreras',
+      title: 'Coordinación Académica General',
+      degree: 'Comisión Especial UNSCH',
+      bio: 'Encargada de la implementación de mallas curriculares modernas y laboratorios de vanguardia.',
+      photo: '/images/facultades/nuevas_carreras.png'
+    },
+    timeline: [
+      { year: '2026', title: 'Aprobación Histórica', description: 'Incorporación formal de Ingeniería Ambiental, Arquitectura y Psicología.' }
+    ],
+    schoolDetails: [
+      {
+        name: 'Ingeniería Ambiental, Arquitectura, Psicología',
+        creationYear: '2026',
+        creationContext: 'Respuesta académica a las necesidades emergentes del país.',
+        director: 'Comisiones de Implementación Académica',
+        duration: '10 semestres académicos',
+        degree: 'Ingeniero(a) Ambiental / Arquitecto(a) / Psicólogo(a)',
+        practiceCenters: ['Talleres de Diseño Arquitectónico', 'Laboratorios Ambientales y Cámara Gesell'],
+        description: 'Diseño urbano sostenible, evaluación de impacto ambiental y bienestar psicosocial.'
+      }
+    ]
+  }
+};
