@@ -63,8 +63,16 @@ function Navbar() {
               />
             </div>
             <div className="brand-text-block">
-              <span className="brand-name">FUSCH</span>
-              <span className="brand-tagline">UNSCH • Ayacucho</span>
+              {/* Visible en computadoras (Desktop) */}
+              <div className="brand-titles-desktop">
+                <span className="brand-name-full">Federación Universitaria San Cristóbal de Huamanga</span>
+                <span className="brand-tagline">FUSCH Ayacucho</span>
+              </div>
+              {/* Visible en celulares (Móvil) */}
+              <div className="brand-titles-mobile">
+                <span className="brand-name-short">FUSCH</span>
+                <span className="brand-tagline">Ayacucho</span>
+              </div>
             </div>
           </Link>
         </div>
